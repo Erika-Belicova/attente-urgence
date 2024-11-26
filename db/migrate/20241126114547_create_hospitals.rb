@@ -4,8 +4,8 @@ class CreateHospitals < ActiveRecord::Migration[7.1]
       t.string :name
       t.string :address
       t.integer :doctor_nb
-      t.integer :latitude
-      t.integer :longitude
+      t.float :latitude
+      t.float :longitude
       t.timestamps
     end
   end
