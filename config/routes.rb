@@ -13,6 +13,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  get "style", to: "pages#style"
+
   resources :patients
   resources :categories, only: [:index, :new, :create]
 end
