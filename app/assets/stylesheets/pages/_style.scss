@@ -56,6 +56,48 @@ p {
   margin: 10px;
 }
 
+.btn-secondary{
+  border-radius: 25px;
+  background:#1C737B;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  width: 96px;
+  height: 5px;
+  padding: 20px 45px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  font-family: noto sans;
+  font-weight: semi-bold;
+  color: white;
+  text-decoration: none;
+  margin: 10px;
+}
+
+
+.btn-third{
+  border-radius: 25px;
+  background:#33B9C7;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  width: 96px;
+  height: 5px;
+  padding: 20px 45px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  font-family: noto sans;
+  font-weight: semi-bold;
+  color: white;
+  text-decoration: none;
+  margin: 10px;
+}
+
+
+
+
 .cards-hospital {
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
