@@ -11,4 +11,5 @@ Rails.application.routes.draw do
   # root "posts#index"
   resources :patients
   resources :categories, only: [:index, :new, :create]
+
 end
