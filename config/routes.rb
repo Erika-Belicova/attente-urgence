@@ -18,4 +18,5 @@ Rails.application.routes.draw do
 
   resources :patients
   resources :categories, only: [:index, :new, :create]
+  resources :hospitals_categories, only: [:index]
 end
