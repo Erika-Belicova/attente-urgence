@@ -24,11 +24,11 @@ h2 {
 h3 {
   color: #33B9C7;
   font-family: noto sans;
-  font-weight: lighter;
+  font-weight: semibold;
 }
 
 p {
-  color: #878787;
+  color: #343E45;
   font-family: noto sans;
 }
 
@@ -161,3 +161,14 @@ p {
 
 
 // ADD NEW CLASSES HERE :
+
+// =Reprise de H1 centré et tel que la maquette
+.titre-1 {
+  color: #1C737B;
+  font-family: noto sans;
+  font-size: 40px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+}
