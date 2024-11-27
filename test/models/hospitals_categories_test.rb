@@ -1,6 +1,6 @@
 require "test_helper"
 
-class HospitalsCategoryTest < ActiveSupport::TestCase
+class HospitalsCategoriesTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
