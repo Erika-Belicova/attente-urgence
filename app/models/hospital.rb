@@ -1,6 +1,8 @@
 class Hospital < ApplicationRecord
-  has_many :hospitals_categories, dependent: :destroy
+  # has_many :hospitals_categories, dependent: :destroy
+  has_many :categories, through: :hospitals_categories, dependent: :destroy
   has_many :appointments, dependent: :destroy
+
 
   validates :name, uniqueness: { scope: :address }
   validates :name, presence: true
