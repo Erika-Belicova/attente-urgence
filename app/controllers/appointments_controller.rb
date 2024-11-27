@@ -1,28 +1,28 @@
 class AppointmentsController < ApplicationController
   def index
-    authorize @appointments
     @appointments = Appointment.all
+    authorize @appointments
   end
 
   def show
-    authorize @appointment
     @appointment = Appointment.find(params[:id])
+    authorize @appointment
   end
 
   def new
-    authorize @appointment
     @appointment = Appointment.new
+    authorize @appointment
   end
 
   def create
-    authorize @appointment
     @appointment = Appointment.new(appointment_params)
     @appointment.save
+    authorize @appointment
   end
 
   def destroy
-    authorize @appointment
     @appointment = Appointment.find(params[:id])
+    authorize @appointment
     @appointment.destroy
 
     redirect_to appointments_path, status: :see_other

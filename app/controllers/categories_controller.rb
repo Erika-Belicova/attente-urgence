@@ -1,18 +1,18 @@
 class CategoriesController < ApplicationController
   def index
-    authorize @categories
     @categories = Category.all
+    authorize @categories
   end
 
   def new
-    authorize @category
     @category = Category.new
+    authorize @category
   end
 
   def create
-    authorize @category
     @category = Category.new(category_params)
     @category.save
+    authorize @category
   end
 
   private

@@ -1,41 +1,41 @@
 class PatientsController < ApplicationController
   def index
-    authorize @patients
     @patients = Patient.all
+    authorize @patients
   end
 
   def show
-    authorize @patient
     @patient = Patient.find(params[:id])
+    authorize @patient
   end
 
   def new
-    authorize @patient
     @patient = Patient.new
+    authorize @patient
   end
 
   def create
-    authorize @patient
     @patient = Patient.new(params[:patient])
     @patient.save
+    authorize @patient
   end
 
   def edit
-    authorize @patient
     @patient = Patient.find(params[:id])
+    authorize @patient
   end
 
   def update
-    authorize @patient
     @patient = Patient.find(params[:id])
+    authorize @patient
     @patient.update(patient_params)
 
     redirect_to patient_path(@patient)
   end
 
   def destroy
-    authorize @patient
     @patient = Patient.find(params[:id])
+    authorize @patient
     @patient.destroy
 
     redirect_to patients_path, status: :see_other
