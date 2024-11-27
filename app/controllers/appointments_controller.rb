@@ -6,6 +6,11 @@ class AppointmentsController < ApplicationController
 
   def show
     @appointment = Appointment.find(params[:id])
+    @appointments = Appointment.all
+    @waiting_list = []
+    @appointments.each do |appointment|
+      @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at
+    end
     authorize @appointment
   end
 
