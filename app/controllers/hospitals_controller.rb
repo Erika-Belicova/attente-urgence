@@ -1,19 +1,23 @@
 class HospitalsController < ApplicationController
-  def new
-    @hospital = Hospital.new
-  end
-
-  def create
-    @hospital = Hospital.new(params[:hospital])
-    @hopital.save
-  end
-
   def index
+    authorize @hospitals
     @hospitals = Hospital.all
   end
 
   def show
+    authorize @hospital
     @hospital = Hospital.find(params[:id])
+  end
+
+  def new
+    authorize @hospital
+    @hospital = Hospital.new
+  end
+
+  def create
+    authorize @hospital
+    @hospital = Hospital.new(params[:hospital])
+    @hopital.save
   end
 
   private
