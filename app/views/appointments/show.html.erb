@@ -1,0 +1,40 @@
+<div>
+  <h1>File d'attente</h1>
+
+  <div>
+    <h2><%= @appointment.hospital %></h2>
+    <h3><%= @appointment.category %></h3>
+  </div>
+
+  <div>
+    <ul>
+      <li><i class="fa-solid fa-user-clock"></i></li>
+      <li><i class="fa-solid fa-circle-notch"></i></li>
+      <div><%= count = @waiting_list.length %></div>
+    </ul>
+    <p>patients dans la file d'attente avant vous</p>
+  </div>
+
+  <div>
+    <div id="waiting-list-card">
+      <div id="waiting-list-inner">
+        <%= @waiting_list.each_with_index do |waiting, index| %>
+          <div>
+            <i class="fa-solid fa-circle-user"></i>
+            <%= "Patient no. #{waiting.id} Order:#{index + 1}" %>
+          </div>
+        <% end%>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <div><h3>temps estimé</h3></div>
+    <div>
+      <% waiting_time = count * 20 %>
+      <% hours = waiting_time / 60 %>
+      <% minutes = waiting_time % 60 %>
+      <%= "#{hours.to_i}:#{minutes.to_i}" %>
+    </div>
+  </div>
+</div>
