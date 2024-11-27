@@ -1,23 +1,23 @@
 class HospitalsController < ApplicationController
   def index
-    authorize @hospitals
     @hospitals = Hospital.all
+    authorize @hospitals
   end
 
   def show
-    authorize @hospital
     @hospital = Hospital.find(params[:id])
+    authorize @hospital
   end
 
   def new
-    authorize @hospital
     @hospital = Hospital.new
+    authorize @hospital
   end
 
   def create
-    authorize @hospital
     @hospital = Hospital.new(params[:hospital])
     @hopital.save
+    authorize @hospital
   end
 
   private
