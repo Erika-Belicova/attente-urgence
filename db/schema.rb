@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_11_26_163103) do
+ActiveRecord::Schema[7.1].define(version: 2024_11_27_110022) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,6 +47,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_26_163103) do
     t.float "longitude"
   end
 
+  create_table "hospitals_categories", force: :cascade do |t|
+    t.bigint "hospital_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_hospitals_categories_on_category_id"
+    t.index ["hospital_id"], name: "index_hospitals_categories_on_hospital_id"
+  end
+
   create_table "patients", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -65,4 +74,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_11_26_163103) do
   add_foreign_key "appointments", "categories"
   add_foreign_key "appointments", "hospitals"
   add_foreign_key "appointments", "patients"
+  add_foreign_key "hospitals_categories", "categories"
+  add_foreign_key "hospitals_categories", "hospitals"
 end
