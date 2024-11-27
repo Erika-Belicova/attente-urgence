@@ -1,8 +1,7 @@
 class HospitalsController < ApplicationController
   def index
     @hospitals = Hospital.all
-    @patient = current_patient
-    # @hospitals = policy_scope(Hospital)
+    authorize @hospitals
   end
 
   def show
