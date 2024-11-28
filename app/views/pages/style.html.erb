@@ -180,8 +180,8 @@
 <%# <!--ajouter elements en dessous> %>
 
 
-//view-show-hospitals
-<div class= "main-container-pixel17 main-container-content">
+<%# //view-show-hospitals %>
+<%# <div class= "main-container-pixel17 main-container-content"> %>
   <h1>Détails</h1>
   <div class="cards-hospital">
       <div class= "hopital-details">
@@ -246,12 +246,106 @@
                 </div>
               </div>
 
-                   <div class="d-flex justify-content-around">
-              <%= link_to "Retour", "#", class: "btn-secondary" %>
-              <%= link_to "Choisir", "#", class: "btn-third" %>
-            </div>
+                  <div class="d-flex justify-content-around">
+                      <%= link_to "Retour", "#", class: "btn-secondary" %>
+                      <%= link_to "Choisir", appointments_path, class: "btn-third" %>
+                  </div>
 
 
       </div>
+  <%# </div> %>
+
+
+
+
+
+<%# show-appointment-confirmation %>
+<div class= "cards-hospital">
+        <div class= "card-category-alert " >
+          <p><i class="fa-sharp fa-solid fa-circle-check icon-big"></i></p>
+            <h1>Vous allez être pris en charge </h1>
+        </div>
+    </div>
+
+<div class= "cards-hospital">
+        <div class= "card-category-alert" >
+          <h2> Veuillez présenter ce QR code au secrétariat dès votre arrivée. Activez vos notifications...</h2>
+        </div>
+    </div>
+
+<div class= "cards-hospital">
+        <div class= "card-category-alert img">
+          <%= image_tag 'logo.png', alt: 'Logo', class: "img" %>
+        </div>
+</div>
+
+<div class= "cards-hospital ">
+      <div class= "card-category-alert">
+         <div class="d-flex justify-content-around">
+                      <%= link_to "Prenez la route !", "#", class: "btn-third-big img h4" %>
+                  </div>
+      </div>
+</div>
+
+
+
+
+
+
+<%# show-appointment-alert %>
+<%# <div class= "main-container-pixel17 main container-content"> %>
+
+    <div class= "cards-hospital">
+        <div class= "card-category-alert " >
+          <p><i class="fa-solid fa-bell icon-big"></i></p>
+            <h1>Vous pouvez prendre la route !</h1>
+        </div>
+    </div>
+
+<div class= "cards-hospital">
+        <div class= "card-category-alert" >
+          <h2><i class="fa-solid fa-hospital small-icon"></i> Il reste 4 personnes avant vous</h2>
+        </div>
+    </div>
+
+      <div class= "cards-hospital">
+        <div class= "card-category-alert" >
+          <h2><i class="fa-solid fa-map-location-dot small-icon"></i> Vous avez 33 minutes de routes</h2>
+        </div>
+    </div>
+
+<div class= "cards-hospital">
+        <div class= "card-category-alert" >
+          <h2><i class="fa-sharp fa-solid fa-magnifying-glass-location small-icon"></i> Rejoignez le CHU Rangueil au 1 Av du professeur Jean Poulhès, 31400 Toulouse </h2>
+        </div>
+    </div>
+
+<div class= "cards-hospital">
+        <div class= "card-category-alert img">
+          <%= image_tag 'logo.png', alt: 'Logo', class: "img" %>
+        </div>
+</div>
+
+<div class= "cards-hospital ">
+      <div class= "card-category-alert">
+         <div class="d-flex justify-content-around">
+                      <%= link_to "Prenez la route !", "#", class: "btn-third-big img h4" %>
+                  </div>
+      </div>
+</div>
+
+
+<%# show-map %>
+
+<div class="cards-hospital">
+  <div class= "card-category-alert">
+
   </div>
 </div>
+
+
+
+
+</div>
+
+<%# </div> %>
