@@ -1,1 +1,28 @@
-<%= button_to "Arrived", root_path(@appointment), method: :get, class: "btn-secondary" %>
+<div class= "main-container-pixel17 main container-content">
+  <div class= "cards-hospital">
+    <div class= "card-category-alert " >
+      <p><i class="fa-sharp fa-solid fa-circle-check icon-big"></i></p>
+      <h1>Vous allez être pris en charge </h1>
+    </div>
+  </div>
+
+  <div class= "cards-hospital">
+    <div class= "card-category-alert" >
+      <h2> Veuillez présenter ce QR code au secrétariat dès votre arrivée. Activez vos notifications...</h2>
+    </div>
+  </div>
+
+  <div class= "cards-hospital">
+    <div class= "card-category-alert img">
+      <%= image_tag 'logo.png', alt: 'Logo', class: "img" %>
+    </div>
+  </div>
+
+  <div class= "cards-hospital ">
+    <div class= "card-category-alert">
+      <div class="d-flex justify-content-around">
+        <%= button_to "Prise en charge", root_path(@appointment), method: :get, class: "btn-third-big img h4" %>
+      </div>
+    </div>
+  </div>
+</div>
