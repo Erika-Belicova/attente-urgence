@@ -3,12 +3,13 @@
 
    <div class="cards-hospital">
 
+
     <% @hospitals.each do |hospital| %>
 
       <div class="card-category-hospital">
 
-
         <div class="d-flex flex-column align-items-center justify-content-center">
+
 
           <!--Nom de l'hopital -->
           <h3><%= hospital.name %></h3>
@@ -19,8 +20,10 @@
 
             <!--image-->
             <div class='img d-flex justify-content-center'>
-              <%= image_tag 'logo.png', alt: 'Logo', style: 'width: 100%; height: auto;' %>
+              <%= cl_image_tag hospital.photo.key, height: 60, width: 60, crop: :fill %>
             </div>
+
+
             <!--div avec le texte et les elements à l'interieur-->
 
 

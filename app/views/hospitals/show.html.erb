@@ -3,7 +3,7 @@
 <p><%= @hospital.doctor_nb %></p>
 <p><%= @hospital.latitude %></p>
 <p><%= @hospital.longitude %></p>
-
+ <%= cl_image_tag @hospital.photo.key, height: 300, width: 400, crop: :fill %>
 
 <div class="main-container-pixel7">
 
