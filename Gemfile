@@ -29,6 +29,9 @@ gem "jbuilder"
 # Add pundit authorization
 gem "pundit"
 
+# To add modal
+gem "popper"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

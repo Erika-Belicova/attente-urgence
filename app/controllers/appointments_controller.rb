@@ -1,4 +1,6 @@
 class AppointmentsController < ApplicationController
+  before_action :set_appointment, only: [:destroy, :map, :arrived]
+
   def index
     @appointments = Appointment.all
     authorize @appointments
@@ -11,6 +13,11 @@ class AppointmentsController < ApplicationController
     @appointments.each do |appointment|
       @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at
     end
+    # count = 10
+    # if count != 0
+    #   sleep 10
+    # end
+
     authorize @appointment
   end
 
@@ -29,16 +36,31 @@ class AppointmentsController < ApplicationController
     @appointment.longitude = 1.0
     @appointment.checked_in_patient = false
     @appointment.save!
-
+    @id = @appointment.id
     authorize @appointment
     redirect_to appointment_path(@appointment)
   end
 
   def destroy
-    @appointment = Appointment.find(params[:id])
     authorize @appointment
     @appointment.destroy
 
     redirect_to appointments_path, status: :see_other
+  end
+
+  def map
+    # @appointment.longitude
+    # @appointment.latitude
+  end
+
+  def arrived
+    @patient = current_patient
+    # @appointment.checked_in_patient
+  end
+
+  private
+
+  def set_appointment
+    @appointment = Appointment.find_by(@id)
   end
 end
