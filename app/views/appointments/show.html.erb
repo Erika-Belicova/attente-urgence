@@ -49,7 +49,7 @@
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Launch demo modal
+  Continuer
 </button>
 
 <!-- Modal -->
@@ -57,18 +57,57 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+
+        <div class= "main-container-pixel17 main container-content">
+
+          <div class= "cards-hospital">
+            <div class= "card-category-alert " >
+              <p><i class="fa-solid fa-bell icon-big"></i></p>
+              <h1>Vous pouvez prendre la route !</h1>
+            </div>
+          </div>
+
+          <div class= "cards-hospital">
+            <div class= "card-category-alert" >
+              <h2><i class="fa-solid fa-hospital small-icon"></i> Il reste 4 personnes avant vous</h2>
+            </div>
+          </div>
+
+          <div class= "cards-hospital">
+            <div class= "card-category-alert" >
+              <h2><i class="fa-solid fa-map-location-dot small-icon"></i> Vous avez 33 minutes de routes</h2>
+            </div>
+          </div>
+
+          <div class= "cards-hospital">
+            <div class= "card-category-alert" >
+              <h2><i class="fa-sharp fa-solid fa-magnifying-glass-location small-icon"></i> Rejoignez le CHU Rangueil au 1 Av du professeur Jean Poulhès, 31400 Toulouse </h2>
+            </div>
+          </div>
+
+          <div class= "cards-hospital">
+            <div class= "card-category-alert img">
+                <%= image_tag 'logo.png', alt: 'Logo', class: "img" %>
+            </div>
+          </div>
+
+          <div class= "cards-hospital ">
+            <div class= "card-category-alert">
+              <div class="d-flex justify-content-around">
+                <%= button_to "Prenez la route !", appointment_map_path(@appointment), method: :get, class: "btn-third-big img h4" %>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
       </div>
       <div class="modal-footer">
-        <%= button_to "Show map", appointment_map_path(@appointment), method: :get, class: "btn-secondary" %>
       </div>
     </div>
   </div>
 </div>
-
-<!-- to be added to hospitals index choisir and hospital show choisir -->
-<!-- <%= button_to "Choisir", appointments_path, method: :post %> -->
