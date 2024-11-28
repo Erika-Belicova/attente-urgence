@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   resources :patients
   resources :categories, only: [:index, :new, :create]
   resources :hospitals_categories, only: [:index]
-  resources :appointments, only: [:index, :new, :create, :show, :destroy]
+  resources :appointments, only: [:index, :new, :create, :show, :destroy] do
+    get "map", to: "appointments#map", as: "map"
+    get "arrived", to: "appointments#arrived", as: "arrived"
+  end
   resources :hospitals, only: [:index, :show, :new, :create]
 end
