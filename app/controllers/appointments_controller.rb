@@ -5,10 +5,6 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @appointment = Appointment.new
-    @appointment.hospital = Hospital.find(params[:id])
-    # @appointment.category =
-
     @appointment = Appointment.find(params[:id])
     @appointments = Appointment.all
     @waiting_list = []
@@ -24,11 +20,14 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new()
+    @appointment = Appointment.new
 
     @appointment.hospital = Hospital.last
     @appointment.category = Category.last
     @appointment.patient = current_patient
+    @appointment.latitude = 1.0
+    @appointment.longitude = 1.0
+    @appointment.checked_in_patient = false
     @appointment.save!
 
     authorize @appointment
@@ -41,11 +40,5 @@ class AppointmentsController < ApplicationController
     @appointment.destroy
 
     redirect_to appointments_path, status: :see_other
-  end
-
-  private
-
-  def appointment_params
-    #params.require(:appointment).permit(:name)
   end
 end

@@ -10,7 +10,10 @@
     <ul>
       <li><i class="fa-solid fa-user-clock"></i></li>
       <li><i class="fa-solid fa-circle-notch"></i></li>
-      <div><%= count = @waiting_list.length %></div>
+      <div>
+        <% count = @waiting_list.length %>
+        <%= count - 1 %>
+      </div>
     </ul>
     <p>patients dans la file d'attente avant vous</p>
   </div>
@@ -21,7 +24,11 @@
         <% @waiting_list.each_with_index do |waiting, index| %>
           <div>
             <i class="fa-solid fa-circle-user"></i>
-            <%= "Patient no. #{waiting.id} Order:#{index + 1}" %>
+            <% if waiting.id == @waiting_list.last.id %>
+              <%= "Vous Order:#{index + 1}" %>
+            <% else %>
+              <%= "Patient no. #{waiting.id} Order:#{index + 1}" %>
+            <% end %>
           </div>
         <% end%>
       </div>
@@ -34,7 +41,8 @@
       <% waiting_time = count * 20 %>
       <% hours = waiting_time / 60 %>
       <% minutes = waiting_time % 60 %>
-      <%= "#{hours.to_i}:#{minutes.to_i}" %>
+      <% minutes = "00" if minutes == 0 %>
+      <%= "#{hours.to_i}:#{minutes.to_s}" %>
     </div>
   </div>
 </div>
