@@ -5,14 +5,14 @@ Hospital.destroy_all
 
 # Create categories
 categories = Category.create!([
-  { name: "Urgences cardio-vasculaires"},
-  { name: "Urgences respiratoires" },
-  { name: "Urgences traumatiques" },
-  { name: "Urgences neurologiques" },
-  { name: "Urgences digestives" },
-  { name: "Urgences pédiatriques" },
-  { name: "Urgences gynécologiques et obstétricales" },
-  { name: "Urgences psychiatriques" }
+  { name: "Cardiologie" },
+  { name: "Pneumologie" },
+  { name: "Traumatologie" },
+  { name: "Neurologie" },
+  { name: "Gastroentérologie" },
+  { name: "Pédiatrie" },
+  { name: "Gynécologiques" },
+  { name: "Psychiatrie" }
 ])
 
 p "Created #{Category.count} categories"
