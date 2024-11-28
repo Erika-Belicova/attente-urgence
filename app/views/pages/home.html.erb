@@ -1,2 +1,22 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+ <h1 class="title-home">AttenteUrgence</h1>
+
+  <div class="background">
+    <%= image_tag 'attenteurgence.jpg', alt: 'attenteurgence', class: 'img-homepage' %>
+  </div>
+
+    <div class="form-container-home">
+     <%= form_with url: hospitals_path, method: :get, local: true, html: { class: "center-form center-field" } do %>
+        <div class="center-form">
+          <label for="categories">Categories:</label>
+          <%= text_field_tag :categories, params[:categories], id: 'categories' %>
+        </div>
+        <div class="center-form">
+          <label for="adresse">Adresse:</label>
+          <%= text_field_tag :adresse, params[:adresse], id: 'adresse' %>
+        </div>
+        <div class="btn-form-home">
+          <%= submit_tag 'Rechercher', class: "btn-primary-home"%>
+        </div>
+      <% end %>
+    </div>
