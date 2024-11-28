@@ -1,7 +1,7 @@
 class Hospital < ApplicationRecord
   has_many :hospital_categories, dependent: :destroy
   has_many :appointments, dependent: :destroy
-
+  has_one_attached :photo
 
   validates :name, uniqueness: { scope: :address }
   validates :name, presence: true
