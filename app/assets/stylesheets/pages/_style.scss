@@ -262,9 +262,17 @@ p {
   margin: 10px;
 }
 .specialities{
-  display: flex;
-  justify-content: space-around;;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  // justify-content: space-around;
+  align-items : center;
 }
+
+.align-categories {
+  align-self : center;
+  justify-self: center;
+}
+
 .card-category-alert{
   background-size: cover;
   background-position: center;
