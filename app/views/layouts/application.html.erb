@@ -17,5 +17,8 @@
     <p class="alert"><%= alert %></p>
 
     <%= yield %>
+    <% if patient_signed_in? %>
+    <%= render "/shared/footer" %>
+    <% end %>
   </body>
 </html>
