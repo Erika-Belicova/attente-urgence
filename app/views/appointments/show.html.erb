@@ -1,56 +1,87 @@
 <div class="main-container-pixel7 main-container-content">
   <h1>File d'attente</h1>
 
-  <div>
-    <h2><%= @appointment.hospital.name %></h2>
-    <h3><%= @appointment.category.name %></h3>
-  </div>
 
-  <div>
-    <ul>
-      <li><i class="fa-solid fa-user-clock"></i></li>
-      <li><i class="fa-solid fa-circle-notch"></i></li>
-      <div>
-        <% count = @waiting_list.length %>
-        <%= count - 1 %>
+  <!-- tu -->
+  <div class="cards-hospital">
+
+    <div class="card-category-hospital">
+      <div class="d-flex flex-column align-items-center justify-content-center">
+        <!--Nom de l'hopital -->
+        <h2 id="hospital-appointment"><%= @appointment.hospital.name %></h2>
+        <h3 class="h3-appointment"><%= @appointment.category.name %></h3>
       </div>
-    </ul>
-    <p>patients dans la file d'attente avant vous</p>
-  </div>
+    </div>
 
-  <div>
-    <div id="waiting-list-card">
-      <div id="waiting-list-inner">
-        <% @waiting_list.each_with_index do |waiting, index| %>
-          <div>
-            <i class="fa-solid fa-circle-user"></i>
-            <% if waiting.id == @waiting_list.last.id %>
-              <%= "Vous Order:#{index + 1}" %>
-            <% else %>
-              <%= "Patient no. #{waiting.id} Order:#{index + 1}" %>
-            <% end %>
+    <div class="card-category-hospital">
+      <div id="icons" class="d-flex flex-column align-items-center justify-content-center">
+        <div>
+              <div class="d-flex justify-content-around">
+                <% count = @waiting_list.length %>
+                <h2 class="icon-appointment"><i id="clock" class="fa-solid fa-user-clock">&nbsp;&nbsp;&nbsp;<%= count - 1 %></i></h2>
+                <!-- <h2><i class="fa-solid fa-circle-notch"></i>15</h2> -->
+              </div>
+
+
+          <p><strong>nombre de patients avant vous</strong></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-category-hospital">
+      <div class="d-flex flex-column align-items-center justify-content-center">
+        <!--Nom de l'hopital -->
+        <div id="waiting-list-card">
+          <div id="waiting-list-inner">
+            <% @waiting_list.each_with_index do |waiting, index| %>
+              <div id="line" class="d-flex justify-content-around">
+
+                  <% if waiting.id == @waiting_list.last.id %>
+                    <div class="d-flex justify-content-around">
+                      <p class="entry"><i id="you" class="fa-solid fa-circle-user"></i><%= " Vous " %></p>
+                      <p class="entry"><%= " Order:#{index + 1}" %></p>
+                    </div>
+                  <% else %>
+                    <div class="d-flex justify-content-around">
+                      <p class="entry"><i id="patient" class="fa-solid fa-circle-user"></i><%= " Patient no. #{waiting.id}   " %></p>
+                      <p class="entry">Order:<%= " #{index + 1}" %></p>
+                    </div>
+                  <% end %>
+
+              </div>
+            <% end%>
           </div>
-        <% end%>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div>
-    <div><h3>temps estimé</h3></div>
-    <div>
-      <% waiting_time = count * 20 %>
-      <% hours = waiting_time / 60 %>
-      <% minutes = waiting_time % 60 %>
-      <% minutes = "00" if minutes == 0 %>
-      <%= "#{hours.to_i}:#{minutes.to_s}" %>
+    <div class="card-category-hospital">
+      <div class="d-flex flex-column align-items-center justify-content-center">
+        <!--Nom de l'hopital -->
+        <div id="time-header" class="d-flex flex-column align-items-center justify-content-center">
+          <h3 class="time-appointment">temps estimé</h3>
+        </div>
+        <div id="time-value" class="d-flex flex-column align-items-center justify-content-center">
+          <% waiting_time = count * 20 %>
+          <% hours = waiting_time / 60 %>
+          <% minutes = waiting_time % 60 %>
+          <% minutes = "00" if minutes == 0 %>
+          <h3 class="time"><%= "#{hours.to_i}:#{minutes.to_s}" %></h3>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Continuer
-</button>
+    <!-- Button trigger modal -->
+    <div class="d-flex justify-content-around">
+      <button type="button" class="btn-primary-appointment" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Continuer
+      </button>
+    </div>
+
+  </div>
+
+<!-- tu koniec -->
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -110,4 +141,7 @@
       </div>
     </div>
   </div>
+</div>
+
+
 </div>

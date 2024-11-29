@@ -1,0 +1,118 @@
+.btn-primary-appointment {
+  border-radius: 16px;
+  background: #1C737B;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  height: 5vh;
+  width: 45vw;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  font-family: noto sans;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  margin: 10px auto;
+}
+
+
+h2.icon-appointment {
+  color: #33B9C7;
+  font-family: noto sans;
+  font-size: 56px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+  text-align: center;
+}
+
+#hospital-appointment {
+  color: #33B9C7;
+  font-family: noto sans;
+  font-size: 32px;
+  font-weight: 400;
+  display: flex;
+  justify-content: center;
+  padding: 14px;
+  text-align: center;
+}
+
+h3.h3-appointment {
+  color: #1C737B;
+  font-family: noto sans;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+h3.time-appointment {
+  color: white;
+  font-family: noto sans;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+#clock {
+  padding: 0px;
+}
+
+#patient {
+  color: #1C737B;
+}
+
+#you {
+  color: #33B9C7;
+}
+
+#icons {
+  padding-top: 5px;
+}
+
+#time-header {
+  background-color: #1C737B;
+  width: 100%;
+  border-radius: 16px 16px 0 0;
+  padding-top: 5px;
+}
+
+#time-value {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-style: solid;
+  border-width: 5px;
+  border-color: rgba(52, 62, 69, 0.25);
+  width: 100%;
+  border-radius: 0 0 16px 16px;
+  background-color: white;
+justify-content: center;
+}
+
+h3.time {
+  font-size: 32px;
+  color: rgba(52, 62, 69, 1);;
+}
+
+#waiting-list-card {
+  padding: 7%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  border: rgba(52, 62, 69, 1);
+  border-width: 1px;
+  border-style: solid;
+  width: 90%;
+  height: 90%;
+  border-radius: 16px;
+}
+
+#line {
+  border-top: rgba(52, 62, 69, 1);
+  border-bottom: rgba(52, 62, 69, 1);
+  border-style: solid;
+  border-width: 1px;
+}
+
+p.entry {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
