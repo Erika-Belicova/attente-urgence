@@ -1,5 +1,7 @@
 class Hospital < ApplicationRecord
-  has_many :hospital_categories, dependent: :destroy
+  # has_many :hospital_categories, through: :hospital_categories, dependent: :destroy
+  has_many :hospital_categories
+  has_many :categories, through: :hospital_categories
   has_many :appointments, dependent: :destroy
   has_one_attached :photo
 
