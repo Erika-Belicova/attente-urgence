@@ -1,5 +1,4 @@
-
- <%= cl_image_tag @hospital.photo.key, height: 300, width: 400, crop: :fill %>
+<%= cl_image_tag @hospital.photo.key, height: 300, width: 400, crop: :fill %>
 
 <div class= "main-container-pixel17 main-container-content">
   <h1>Détails</h1>
@@ -48,6 +47,10 @@
                       <h2>Spécialités</h2>
 
                       <div class= "specialities">
+
+
+
+
                       <%= link_to "Neurologie", "#", class: "btn-specialty-1" %>
                       <%= link_to "Pédiatrie", "#", class: "btn-specialty-2" %>
                       </div>

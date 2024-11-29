@@ -1,6 +1,6 @@
 // Specific CSS for your home-page
 .img-homepage {
-  width: auto;
+  width: 412px;
   height: 500px;
   // position: absolute;
   // top: 48%;
@@ -40,6 +40,7 @@
   margin-top: -100px;
   z-index: 100;
   position: relative;
+  font-family: noto sans;
 }
 
 .btn-form-home {
@@ -50,9 +51,54 @@
   flex-direction: column;
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
+  position: relative;
 }
 
 .center-field {
   margin-left: 80px;
   margin-right: 80px;
+}
+
+.center-form input[type="text"] {
+  border-radius: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+}
+
+.center-form select {
+  border-radius: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 100%;
+  box-sizing: border-box;
+  color: #757575; /* Ajustez cette couleur selon vos besoins */
+  font-size: 16px; /* Ajustez cette taille selon vos besoins */
+  background-color: white;
+  appearance: none; /* Pour enlever les styles par défaut des navigateurs */
+  -webkit-appearance: none; /* Pour Safari */
+  -moz-appearance: none; /* Pour Firefox */
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.center-form select:focus {
+  outline: none;
+  border-color: #757575;
+}
+
+.center-form .dropdown::after {
+  content: '\25BC'; /* Unicode pour la flèche vers le bas */
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  color: #757575;
+}
+
+.center-form select option {
+  color: #757575; /* Ajustez cette couleur selon vos besoins */
 }
