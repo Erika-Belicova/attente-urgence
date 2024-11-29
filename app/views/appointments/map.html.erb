@@ -1,1 +1,27 @@
-<%= button_to "Close map", appointment_arrived_path(@appointment), method: :get, class: "btn-secondary" %>
+<div class= "cards-hospital">
+        <div class= "card-category-alert img">
+          <%= image_tag 'Hospital-pix/itinirary.jpg', alt: 'Itinirary', class: "img" %>
+        </div>
+</div>
+
+<div class= "cards-hospital ">
+      <div class= "card-category-alert">
+         <div class="d-flex justify-content-around">
+                      <%= link_to "Olocal, 18 Port Etienne", "#", class: "btn-third-big img h4" %>
+                  </div>
+      </div>
+</div>
+<div class= "cards-hospital ">
+      <div class= "card-category-alert">
+         <div class="d-flex justify-content-around">
+                      <%= link_to "CHU Rangueil, pl St Joseph", "#", class: "btn-third-big img h4" %>
+                  </div>
+      </div>
+</div>
+
+</div>
+
+
+<div class="d-flex justify-content-center">
+<%= button_to "Arrivé", appointment_arrived_path(@appointment), method: :get, class: "btn-secondary" %>
+</div>
