@@ -13,10 +13,22 @@ class AppointmentsController < ApplicationController
     @appointments.each do |appointment|
       @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at
     end
-    # count = 10
-    # if count != 0
-    #   sleep 10
-    # end
+
+    # test start
+
+    @time_per_patient = 20
+    @waiting_time = @waiting_list.length * @time_per_patient
+
+    @start_time = Time.now.utc
+
+    @end_time = @start_time + @waiting_time.minutes
+
+    # Convert both times to ISO8601 format (compatible with JavaScript's Date object)
+    @start_time_iso = @start_time.iso8601
+    @end_time_iso = @end_time.iso8601
+
+    # test end
+
 
     authorize @appointment
   end
