@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <div class="card-category-hospital">
+    <div class="card-category-hospital no-padding">
       <div class="d-flex flex-column align-items-center justify-content-center">
         <div id="time-header" class="d-flex flex-column align-items-center justify-content-center">
           <h3 class="time-appointment">temps estimé</h3>
@@ -110,30 +110,32 @@
         </div>
         <div class="modal-body">
 
-          <div class= "main-container-pixel17 main container-content">
+          <!-- <div class= "main-container-pixel17 main container-content"> -->
 
             <div class= "cards-hospital">
               <div class= "card-category-alert " >
                 <p><i class="fa-solid fa-bell icon-big"></i></p>
-                <h1>Vous pouvez prendre la route !</h1>
+                <h1 class="h1-modal">Vous pouvez prendre la route !</h1>
               </div>
             </div>
 
             <div class= "cards-hospital">
               <div class= "card-category-alert" >
-                <h2><i class="fa-solid fa-hospital small-icon"></i> Il reste 4 personnes avant vous</h2>
+                <h2 class="h2-modal"><i class="fa-solid fa-hospital small-icon"></i> Il reste <%= @waiting_list.length %> personnes avant vous</h2>
               </div>
             </div>
 
             <div class= "cards-hospital">
               <div class= "card-category-alert" >
-                <h2><i class="fa-solid fa-map-location-dot small-icon"></i> Vous avez 33 minutes de routes</h2>
+                <!-- récuperer la bonne valeur -->
+                <% @duration = 30 %>
+                <h2 class="h2-modal"><i class="fa-solid fa-map-location-dot small-icon"></i> Vous avez <%= @duration %> minutes de routes</h2>
               </div>
             </div>
 
             <div class= "cards-hospital">
               <div class= "card-category-alert" >
-                <h2><i class="fa-sharp fa-solid fa-magnifying-glass-location small-icon"></i> Rejoignez le CHU Rangueil au 1 Av du professeur Jean Poulhès, 31400 Toulouse </h2>
+                <h2 class="h2-modal"><i class="fa-sharp fa-solid fa-magnifying-glass-location small-icon"></i> Rejoignez le CHU Rangueil au 1 Av du professeur Jean Poulhès, 31400 Toulouse </h2>
               </div>
             </div>
 
@@ -150,7 +152,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          <!--</div> container pixel 7 -->
 
         </div>
         <div class="modal-footer">
