@@ -1,6 +1,6 @@
-.appointment-scroll{
-  overflow:scroll;
-  overflow-x:hidden;
+.appointment-scroll {
+  overflow: auto;
+  height: 100vh;
 }
 
 #first-card {
