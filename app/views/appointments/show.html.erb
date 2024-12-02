@@ -72,7 +72,7 @@
                 data-countdown-from-value="<%= @start_time_iso %>"
                 data-countdown-to-value="<%= @end_time_iso %>">
 
-              <div data-countdown-target="during" class="countdown-card" style="position: relative; display: block; color: black;">
+              <div data-countdown-target="during" data-countdown-action="click->countdown#" class="countdown-card" style="position: relative; display: block; color: black;">
                 <!-- Displaying the remaining time -->
                 <h3 class="time">
                   <time data-countdown-target="remainingTime"></time>
