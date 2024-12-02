@@ -1,21 +1,11 @@
 // Specific CSS for your home-page
-.img-homepage {
-  width: auto;
-  height: 500px;
-  // position: absolute;
-  // top: 48%;
-  // left: 50%;
-  // transform: translate(-50%, -50%);
-  opacity: 0.7;
-  z-index: 0;
-}
-
 .background {
-    // background-image: url('/app/assets/images/attenteurgence.jpg');
+    background-image: url('./attenteurgence.jpg');
     background-size: cover;
     background-repeat: no-repeat; /* Ajout pour éviter les répétitions */
     background-position: center; /* Centrage */
     width: 100vw;
+    height: 500px;
 }
 
 .btn-primary-home {
