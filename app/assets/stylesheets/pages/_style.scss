@@ -40,6 +40,7 @@ h3 {
   font-family: noto sans;
   font-size: 20px;
   font-weight: 700;
+  text-align: center;
 }
 
 h4 {
@@ -78,6 +79,7 @@ p {
   color: white;
   text-decoration: none;
   margin: 10px;
+  border: 0px;
 }
 
 .btn-secondary{
@@ -97,6 +99,7 @@ p {
   color: white;
   text-decoration: none;
   margin: 10px;
+  border: 0px;
 }
 
 
@@ -117,6 +120,7 @@ p {
   color: white;
   text-decoration: none;
   margin: 10px;
+  border: 0px;
 }
 
 
@@ -144,7 +148,9 @@ p {
   border: 0px solid #000;
   background: #FFF;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-
+  text-align: center;
+  padding-left: 8px;
+  padding-right: 8px;
 }
 
 // Smallest device
@@ -189,7 +195,7 @@ p {
   background:#DAFBFF;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   display: flex;
-  width: 101px;
+  width: 120px;
   height: 28px;
   padding: 20px 45px;
   justify-content: center;
@@ -208,7 +214,7 @@ p {
   background:#FFCBD3;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   display: flex;
-  width: 101px;
+  width: 120px;
   height: 28px;
   padding: 20px 45px;
   justify-content: center;
@@ -227,7 +233,7 @@ p {
   background:#E9FFDA;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   display: flex;
-  width: 101px;
+  width: 120px;
   height: 28px;
   padding: 20px 45px;
   justify-content: center;
@@ -246,7 +252,7 @@ p {
   background:#FFD2FC;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   display: flex;
-  width: 101px;
+  width: 120px;
   height: 28px;
   padding: 20px 45px;
   justify-content: center;
