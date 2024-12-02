@@ -1,8 +1,18 @@
 class HospitalsController < ApplicationController
+  # def index
+  #   @hospitals = Hospital.all
+  #   authorize @hospitals
+  # end
+
   def index
-    @hospitals = Hospital.all
-    authorize @hospitals
+    if params[:category].present?
+      @hospitals = Hospital.joins(:categories).where(categories: { name: params[:category] })
+    else
+      @hospitals = Hospital.all
+      authorize @hospitals
+    end
   end
+
 
   def show
     @hospital = Hospital.find(params[:id])
