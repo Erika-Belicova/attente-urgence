@@ -11,7 +11,7 @@ categories = Category.create!([
 { name: "Neurologie" },
 { name: "Gastroentérologie" },
 { name: "Pédiatrie" },
-{ name: "Gynécologiques" },
+{ name: "Gynécologie" },
 { name: "Psychiatrie" }
 ])
 

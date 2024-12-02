@@ -2,26 +2,42 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 100px;
-  padding: 10px 50px;
+  padding: 8px; /* Minimum padding pour éviter un aspect trop serré */
   color: black;
-
+  position: fixed; /* Fixe le footer en bas de la page */
+  bottom: 0; /* Colle le footer au bas */
+  width: 100%; /* Assure qu'il occupe toute la largeur */
+  z-index: 1000; /* Le met au-dessus des autres éléments */
+  background-color: #fff; /* Fond visible */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Ombre pour démarcation */
 }
+
 .footer-links {
-  color:black;
+  color: black;
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100%;
 }
+
 .footer-links a {
   text-decoration: none;
-  font-size: 24px;
-  padding: 0px 10px;
+  font-size: 24px; /* Ajuste pour une meilleure lisibilité */
+  padding: 0px 0px;
+  text-align: center; /* Centre le texte */
 }
-p.footer-paragraph{
-  font-size: 8px;
+
+p.footer-paragraph {
+  font-size: 8px; /* Texte réduit */
+  margin: 0; /* Supprime les marges par défaut */
+  text-align: center; /* Centre le texte */
 }
+
 .fa-solid {
-  color:black;
+  color: #33B9C7;
+}
+
+.footer.hidden {
+  transform: translateY(100%); /* Glisse le footer hors de l'écran */
+  transition: transform 0.3s ease-in-out; /* Animation fluide */
 }

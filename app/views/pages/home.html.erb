@@ -1,28 +1,30 @@
-<h1 class="title-home">AttenteUrgence</h1>
+  <h1>AttenteUrgence</h1>
 
-  <div class="background">
-    <%= image_tag 'attenteurgence.jpg', alt: 'attenteurgence', class: 'img-homepage' %>
-  </div>
-
-  <div class="form-container-home">
+    <div class="background">
+    <!-- contient l'image de fond -->
+    </div>
 
 
+<div class="form-container-home">
+  <%= form_with url: hospitals_path, method: :get, local: true, html: { class: "center-form center-field" } do %>
+    <!-- Dropdown pour filtrer par catégorie -->
+    <div class="center-form dropdown">
+      <%= select_tag :category, options_for_select([['Catégorie', '']] +
+        ['Cardiologie', 'Pneumologie', 'Traumatologie', 'Neurologie',
+         'Gastroentérologie', 'Pédiatrie', 'Gynécologie', 'Psychiatrie']
+        .map { |c| [c, c] }, params[:category]),
+        id: 'categories', class: 'form-select' %>
+    </div>
 
-    <%= form_with url: hospitals_path, method: :get, local: true, html: { class: "center-form center-field" } do %>
-      <div class="center-form dropdown">
-        <%= select_tag :categories, options_for_select([['Catégorie', '']] + ['Cardiologie', 'Pneumologie', 'Traumatologie', 'Neurologie', 'Gastroentérologie', 'Pédiatrie', 'Gynécologiques', 'Psychiatrie'].map { |c| [c, c] }, params[:categories]), id: 'categories' %>
-      </div>
+    <!-- Champ texte pour filtrer par adresse -->
+    <div class="center-form">
+      <label for="adresse"></label>
+      <%= text_field_tag :address, params[:address], id: 'adresse', placeholder: 'Adresse', class: 'form-control' %>
+    </div>
 
-
-
-
-
-      <div class="center-form">
-        <label for="adresse"></label>
-        <%= text_field_tag :address, params[:address], id: 'adresse', placeholder: 'Adresse' %>
-      </div>
-      <div class="btn-form-home">
-        <%= submit_tag 'Rechercher', class: "btn-primary-home" %>
-      </div>
-    <% end %>
-  </div>
+    <!-- Bouton de recherche -->
+    <div class="btn-form-home">
+      <%= submit_tag 'Rechercher', class: "btn-primary-home" %>
+    </div>
+  <% end %>
+</div>

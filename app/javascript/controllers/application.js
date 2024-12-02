@@ -6,6 +6,10 @@ const application = Application.start()
 application.debug = false
 window.Stimulus   = application
 
+// import FooterController from "./footer_controller.js"
+// Stimulus.register("footer", FooterController)
+
+
 export { application }
 
 import CountdownController from "./countdown_controller.js"
