@@ -10,3 +10,11 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.sticky-navbar {
+  position: sticky;
+  top: 0; /* La barre reste collée au sommet */
+  z-index: 1000; /* Assurez-vous qu'elle reste au-dessus des autres éléments */
+  background-color: #fff; /* Assurez-vous qu'elle a un fond visible */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optionnel : ajoutez une ombre pour distinguer la barre */
+}

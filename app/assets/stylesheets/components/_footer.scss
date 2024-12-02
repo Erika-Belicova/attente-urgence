@@ -1,28 +1,74 @@
+// .footer {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-around;
+//   // height: 100px;
+//   padding: 0px 0px;
+//   color: black;
+//   position: sticky;
+//   bottom: 0; /* La barre reste collée au sommet */
+//   z-index: 1000; /* Assurez-vous qu'elle reste au-dessus des autres éléments */
+//   background-color: #fff; /* Assurez-vous qu'elle a un fond visible */
+//   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+// }
+// .footer-links {
+//   color:black;
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-around;
+//   width: 100%;
+// }
+// .footer-links a {
+//   text-decoration: none;
+//   font-size: 24px;
+//   padding: 0px 10px;
+// }
+// p.footer-paragraph{
+//   font-size: 8px;
+// }
+// .fa-solid {
+//   color:black;
+// }
+
+
 .footer {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  height: 100px;
-  padding: 10px 50px;
+  padding: 10px; /* Minimum padding pour éviter un aspect trop serré */
   color: black;
-  position: sticky;
-
+  position: fixed; /* Fixe le footer en bas de la page */
+  bottom: 0; /* Colle le footer au bas */
+  width: 100%; /* Assure qu'il occupe toute la largeur */
+  z-index: 1000; /* Le met au-dessus des autres éléments */
+  background-color: #fff; /* Fond visible */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Ombre pour démarcation */
 }
+
 .footer-links {
-  color:black;
+  color: black;
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100%;
 }
+
 .footer-links a {
   text-decoration: none;
-  font-size: 24px;
+  font-size: 24px; /* Ajuste pour une meilleure lisibilité */
   padding: 0px 10px;
 }
-p.footer-paragraph{
-  font-size: 8px;
+
+p.footer-paragraph {
+  font-size: 8px; /* Texte réduit */
 }
+
 .fa-solid {
-  color:black;
+  color: black;
+}
+
+.footer.hidden {
+  transform: translateY(100%); /* Glisse le footer hors de l'écran */
+  transition: transform 0.3s ease-in-out; /* Animation fluide */
 }
