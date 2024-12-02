@@ -90,7 +90,7 @@
 }
 
 .center-form .dropdown::after {
-  content: '\25BC'; /* Unicode pour la flèche vers le bas */
+  // content: '\25BC'; /* Unicode pour la flèche vers le bas */
   position: absolute;
   right: 15px;
   top: 50%;
