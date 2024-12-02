@@ -64,44 +64,32 @@
         <div id="time-header" class="d-flex flex-column align-items-center justify-content-center">
           <h3 class="time-appointment">temps estimé</h3>
         </div>
+
         <div id="time-value" class="d-flex flex-column align-items-center justify-content-center">
-       <!--   <% waiting_time = count * 20 %>
-          <% hours = waiting_time / 60 %>
-          <% minutes = waiting_time % 60 %>
-          <% minutes = "00" if minutes == 0 %>
-          <h3 class="time"><%= "#{hours.to_i}:#{minutes.to_s}" %></h3> -->
+          <!-- Countdown Area -->
+          <div id="test">
+            <div data-controller="countdown"
+                data-countdown-from-value="<%= @start_time_iso %>"
+                data-countdown-to-value="<%= @end_time_iso %>">
 
-<!-- test start -->
-<!-- Test Start -->
-<!-- Countdown Area -->
-<!-- Countdown Area -->
-<div id="test">
-  <div
-    data-controller="countdown"
-    data-countdown-from-value="<%= @start_time_iso %>"
-    data-countdown-to-value="<%= @end_time_iso %>">
+              <div data-countdown-target="during" class="countdown-card" style="position: relative; display: block; color: black;">
+                <!-- Displaying the remaining time -->
+                <h3 class="time">
+                  <time data-countdown-target="remainingTime"></time>
+                </h3>
 
-    <div data-countdown-target="during" style="display: block; color: black;">
-      <!-- Displaying the remaining time -->
-      <h3 class="time"><time data-countdown-target="remainingTime"></time></h3>
-    </div>
+                <!-- Fast Forward Toggle Button (Real button) -->
+                <button data-countdown-target="fastForwardToggle"
+                      style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0); border: none; cursor: pointer;">
 
-    <!-- Fast Forward Toggle Button (Visible) -->
-    <!-- <button data-countdown-target="fastForwardToggle" style="padding: 10px; background-color: lightblue; border: none;"> Fast Forward </button> -->
-    <button data-countdown-target="fastForwardToggle" style="background: transparent; border: none; color: transparent; position: absolute; top: 0; left: 0; width: 100%; height: 100%; cursor: pointer;">
-  <!-- The button has no visual appearance, but it's still clickable -->
-</button>
-
-  </div>
-</div>
-
-
-
-<!-- test end -->
-
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
 
     <!-- Button trigger modal -->
     <div class="d-flex justify-content-around">
@@ -149,11 +137,11 @@
               </div>
             </div>
 
-            <div class= "cards-hospital">
+            <!-- <div class= "cards-hospital">
               <div class= "card-category-alert img">
                   <%= image_tag 'logo.png', alt: 'Logo', class: "img" %>
               </div>
-            </div>
+            </div> -->
 
             <div class= "cards-hospital ">
               <div class= "card-category-alert">
