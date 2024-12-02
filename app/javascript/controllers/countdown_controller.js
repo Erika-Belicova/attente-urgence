@@ -739,7 +739,7 @@ export default class extends Controller {
     to: String,
   };
 
-  static targets = ['remainingTime', 'fastForwardToggle'];  // Added fastForwardToggle target
+  static targets = ['during', 'remainingTime', 'fastForwardToggle'];  // Added fastForwardToggle target
 
   connect() {
     console.log("connected");
@@ -753,7 +753,7 @@ export default class extends Controller {
     this.isFastForwarding = false;
     this.fastForwardTimer = null;
 
-    // Listen for the click event on the invisible toggle button
+    // Add event listener for the toggle button click
     this.fastForwardToggleTarget.addEventListener('click', this.toggleFastForward.bind(this));
 
     this.update();  // Initial update when the countdown starts
@@ -762,7 +762,6 @@ export default class extends Controller {
   toggleFastForward() {
     if (this.isFastForwarding) {
       console.log("Fast forward stopped");
-      this.isFastForwarding = false;
       this.stopFastForward();
     } else {
       console.log("Fast forward started");
@@ -776,7 +775,7 @@ export default class extends Controller {
       clearInterval(this.fastForwardTimer);  // Clear any existing fast-forward timers
       this.fastForwardTimer = setInterval(() => {
         const { to } = this.getTimeData();
-        // Subtract 16 minutes from the target time in fast-forward mode
+        // Subtract 15 minutes from the target time in fast-forward mode
         this.toValue = new Date(to.getTime() - 16 * 60 * 1000).toISOString(); // Jump 16 minutes forward
         this.update();  // Reflect changes in the countdown
       }, 200);  // Updates every 200ms for smooth fast-forwarding
@@ -788,6 +787,7 @@ export default class extends Controller {
       clearInterval(this.fastForwardTimer);
       this.fastForwardTimer = null;
     }
+    this.isFastForwarding = false;
     this.update();  // Ensure the final state is updated after fast-forwarding stops
   }
 
@@ -828,6 +828,6 @@ export default class extends Controller {
   disconnect() {
     clearInterval(this.timer);
     clearInterval(this.fastForwardTimer);
-    this.fastForwardToggleTarget.removeEventListener('click', this.toggleFastForward.bind(this));
+    this.fastForwardToggleTarget.removeEventListener('click', this.toggleFastForward.bind(this));  // Remove event listener
   }
 }
