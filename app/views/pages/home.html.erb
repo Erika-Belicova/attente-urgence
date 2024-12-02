@@ -11,7 +11,7 @@
     <div class="center-form dropdown">
       <%= select_tag :category, options_for_select([['Catégorie', '']] +
         ['Cardiologie', 'Pneumologie', 'Traumatologie', 'Neurologie',
-         'Gastroentérologie', 'Pédiatrie', 'Gynécologiques', 'Psychiatrie']
+         'Gastroentérologie', 'Pédiatrie', 'Gynécologie', 'Psychiatrie']
         .map { |c| [c, c] }, params[:category]),
         id: 'categories', class: 'form-select' %>
     </div>
