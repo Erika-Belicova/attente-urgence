@@ -61,39 +61,25 @@
           <h3 class="time-appointment">temps estimé</h3>
         </div>
         <div id="time-value" class="d-flex flex-column align-items-center justify-content-center">
-          <% waiting_time = count * 20 %>
+       <!--   <% waiting_time = count * 20 %>
           <% hours = waiting_time / 60 %>
           <% minutes = waiting_time % 60 %>
           <% minutes = "00" if minutes == 0 %>
-          <h3 class="time"><%= "#{hours.to_i}:#{minutes.to_s}" %></h3>
+          <h3 class="time"><%= "#{hours.to_i}:#{minutes.to_s}" %></h3> -->
 
 <!-- test start -->
-
-  <!-- data-countdown-from-value="2024-12-01T10:00:00.000Z" -->
-  <!-- data-countdown-to-value="2024-12-03T10:00:00.000Z" -->
 <div id="test">
-<div
-  data-controller="countdown"
-
+  <div
+    data-controller="countdown"
     data-countdown-from-value="<%= @start_time_iso %>"
-     data-countdown-to-value="<%= @end_time_iso %>">
+    data-countdown-to-value="<%= @end_time_iso %>">
 
-  <div data-countdown-target="before" style="display: block; color: black;">
-    <time data-countdown-target="fromTime"></time>
-  </div>
-
-   <div data-countdown-target="during" style="display: block; color: black;">
-      <!-- here is the remaining time displayed -->
-      <time data-countdown-target="remainingTime"></time> <!-- This will show the countdown in HH:MM:SS format -->
+    <div data-countdown-target="during" style="display: block; color: black;">
+      <!-- Displaying the remaining time -->
+      <h3 class="time"><time data-countdown-target="remainingTime"></time></h3>
     </div>
-
-  <div data-countdown-target="after" style="display: block;" color: black;>
-    <time data-countdown-target="toTime"></time>
   </div>
 </div>
-
-
-
   </div>
 
 <!-- test end -->
