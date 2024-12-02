@@ -6,7 +6,8 @@
 
 // export default class extends Controller {
 //   static values = {
-//     interval: { default: 1000, type: Number },  // Update every second
+//     interval: { default: 1000, type: Number },  // Normal interval (1 second)
+//     fastForwardInterval: { default: 100, type: Number },  // Fast forward interval (0.1 second, faster)
 //     locale: { default: 'en-GB', type: String },
 //     from: String,
 //     to: String,
@@ -24,12 +25,58 @@
 
 //   connect() {
 //     console.log("connected");
+
+//     // Start the normal countdown interval
 //     this._timer = setInterval(() => {
 //       this.update();
 //     }, this.intervalValue);
 
+//     // Set the fast-forward flag to false initially
+//     this.isFastForwarding = false;
+
+//     // Add event listeners for keydown and keyup to trigger fast-forward functionality
+//     window.addEventListener('keydown', this.handleKeydown.bind(this));
+//     window.addEventListener('keyup', this.handleKeyup.bind(this));
+
 //     this.setTimeValues();
 //     this.update();
+//   }
+
+//   handleKeydown(event) {
+//     // Start fast-forwarding when the "F" key is pressed
+//     if (event.key.toLowerCase() === 'f' && !this.isFastForwarding) {
+//       console.log("Fast forward started");
+//       this.isFastForwarding = true;
+//       this.startFastForward();
+//     }
+//   }
+
+//   handleKeyup(event) {
+//     // Stop fast-forwarding when the "F" key is released
+//     if (event.key.toLowerCase() === 'f' && this.isFastForwarding) {
+//       console.log("Fast forward stopped");
+//       this.isFastForwarding = false;
+//       this.stopFastForward();
+//     }
+//   }
+
+//   startFastForward() {
+//     // Fast-forward mode: Speed up the countdown
+//     if (this.isFastForwarding) {
+//       // Clear the normal timer and start a faster interval
+//       clearInterval(this._timer);
+//       this._timer = setInterval(() => {
+//         this.update();
+//       }, this.fastForwardIntervalValue);  // Fast-forward interval (0.1 second)
+//     }
+//   }
+
+//   stopFastForward() {
+//     // Stop fast-forward mode and return to normal countdown speed
+//     clearInterval(this._timer);
+//     this._timer = setInterval(() => {
+//       this.update();
+//     }, this.intervalValue);  // Normal interval (1 second)
 //   }
 
 //   getTimeData() {
@@ -45,9 +92,7 @@
 
 //     const status = (() => {
 //       if (now < from) return BEFORE;
-
 //       if (now >= from && now <= to) return DURING;
-
 //       return AFTER;
 //     })();
 
@@ -133,14 +178,13 @@
 
 //   disconnect() {
 //     this.stopTimer();
+//     window.removeEventListener('keydown', this.handleKeydown);
+//     window.removeEventListener('keyup', this.handleKeyup);
 //   }
 // }
 
 
-// hore je dobry kod
-// toto dole skusi riesit ten key down na f
-
-// #######################################################################
+// to hore ide ######################################################################################
 
 import { Controller } from '@hotwired/stimulus';
 
@@ -151,7 +195,7 @@ const AFTER = 'AFTER';
 export default class extends Controller {
   static values = {
     interval: { default: 1000, type: Number },  // Normal interval (1 second)
-    fastForwardInterval: { default: 100, type: Number },  // Fast forward interval (0.1 second, faster)
+    fastForwardInterval: { default: 16.67, type: Number },  // Fast-forward interval (60 updates per second)
     locale: { default: 'en-GB', type: String },
     from: String,
     to: String,
@@ -187,36 +231,34 @@ export default class extends Controller {
   }
 
   handleKeydown(event) {
-    // Start fast-forwarding when the "F" key is pressed
-    if (event.key.toLowerCase() === 'f' && !this.isFastForwarding) {
-      console.log("Fast forward started");
-      this.isFastForwarding = true;
-      this.startFastForward();
+    // Toggle between fast-forward and normal speed when the "F" key is pressed
+    if (event.key.toLowerCase() === 'f') {
+      if (!this.isFastForwarding) {
+        console.log("Fast forward started");
+        this.isFastForwarding = true;
+        this.startFastForward();
+      } else {
+        console.log("Fast forward stopped");
+        this.isFastForwarding = false;
+        this.stopFastForward();
+      }
     }
   }
 
   handleKeyup(event) {
-    // Stop fast-forwarding when the "F" key is released
-    if (event.key.toLowerCase() === 'f' && this.isFastForwarding) {
-      console.log("Fast forward stopped");
-      this.isFastForwarding = false;
-      this.stopFastForward();
-    }
+    // Handle keyup if needed, or leave it empty as the toggle happens on keydown
   }
 
   startFastForward() {
-    // Fast-forward mode: Speed up the countdown
-    if (this.isFastForwarding) {
-      // Clear the normal timer and start a faster interval
-      clearInterval(this._timer);
-      this._timer = setInterval(() => {
-        this.update();
-      }, this.fastForwardIntervalValue);  // Fast-forward interval (0.1 second)
-    }
+    // Fast-forward mode: Speed up the countdown to 60 updates per second (16.67ms)
+    clearInterval(this._timer);
+    this._timer = setInterval(() => {
+      this.update();
+    }, this.fastForwardIntervalValue);  // Fast-forward interval (16.67ms)
   }
 
   stopFastForward() {
-    // Stop fast-forward mode and return to normal countdown speed
+    // Stop fast-forward mode and return to normal countdown speed (1 second)
     clearInterval(this._timer);
     this._timer = setInterval(() => {
       this.update();
@@ -326,6 +368,3 @@ export default class extends Controller {
     window.removeEventListener('keyup', this.handleKeyup);
   }
 }
-
-
-// tu test ######################################################################################
