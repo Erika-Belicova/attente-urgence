@@ -21,7 +21,8 @@
   <div class= "cards-hospital ">
     <div class= "card-category-alert">
       <div class="d-flex justify-content-around">
-        <%= button_to "Confirmation", root_path(@appointment), method: :get, class: "btn-third img h4" %>
+        <%= link_to "Confirmation", appointment_path(@appointment),
+          data: {turbo_method: :delete, turbo_confirm: "Avez-vous déjà été pris en charge ?"}, class: "btn-third img h4" %>
       </div>
     </div>
   </div>

@@ -9,9 +9,11 @@ class AppointmentsController < ApplicationController
   def show
     @appointment = Appointment.find(params[:id])
     @appointments = Appointment.all
+    @hospital = @appointment.hospital
     @waiting_list = []
     @appointments.each do |appointment|
-      @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at
+      @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at &&
+                                                                    @appointment.checked_in_patient == false
     end
 
     # test start
@@ -57,7 +59,7 @@ class AppointmentsController < ApplicationController
     authorize @appointment
     @appointment.destroy
 
-    redirect_to appointments_path, status: :see_other
+    redirect_to root_path, status: :see_other
   end
 
   def map
@@ -66,6 +68,7 @@ class AppointmentsController < ApplicationController
   end
 
   def arrived
+    @id = @appointment.id
     @patient = current_patient
     # @appointment.checked_in_patient
   end
