@@ -12,4 +12,6 @@ class Hospital < ApplicationRecord
   validates :longitude, presence: true
   validates_length_of :name, minimum: 2, message: "doit contenir au moins 2 caractères"
   validates_length_of :address, minimum: 6, message: "doit contenir au moins 6 caractères"
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
 end
