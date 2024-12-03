@@ -28,9 +28,8 @@ class AppointmentsController < ApplicationController
     @end_time_iso = @end_time.iso8601
 
     # test end
-
-
     authorize @appointment
+
   end
 
   def new
@@ -61,10 +60,14 @@ class AppointmentsController < ApplicationController
   end
 
   def map
-    # @appointment.longitude
-    # @appointment.latitude
+    longitude = Appointment.find(params[:appointment_id]).hospital.longitude
+    latitude = Appointment.find(params[:appointment_id]).hospital.latitude
+    @marker = {
+      lat: latitude,
+      lng: longitude,
+    }
   end
-
+  
   def arrived
     @patient = current_patient
     # @appointment.checked_in_patient
