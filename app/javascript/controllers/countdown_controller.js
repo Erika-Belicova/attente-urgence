@@ -10,7 +10,7 @@ export default class extends Controller {
     to: String,
   };
 
-  static targets = ['during', 'remainingTime', 'fastForwardToggle'];  // Added fastForwardToggle target
+  static targets = ['during', 'remainingTime', 'fastForwardToggle', 'modalButton'];  // Added fastForwardToggle target
 
   connect() {
     console.log("connected");
@@ -49,9 +49,23 @@ export default class extends Controller {
   startFastForward() {
     if (this.isFastForwarding) {
       clearInterval(this.fastForwardTimer);  // Clear any existing fast-forward timers
+
       this.fastForwardTimer = setInterval(() => {
         const { to } = this.getTimeData();
-        // Subtract 15 minutes from the target time in fast-forward mode
+        if (!to) return;  // If to is invalid, exit
+
+        const remainingTimeInSeconds = Math.floor((to - new Date()) / 1000);
+
+        // Stop fast forward if the countdown reaches or exceeds 40 minutes
+        if (remainingTimeInSeconds <= 40 * 60) {
+          console.log("Stopping fast forward because countdown reached 40 minutes.");
+          this.stopFastForward();  // Stop fast forward if remaining time is 40 minutes or less
+          console.log("Automatically clicking the action button");
+          this.modalButtonTarget.click();
+          return;
+        }
+
+        // Subtract 16 minutes from the target time in fast-forward mode
         this.toValue = new Date(to.getTime() - 16 * 60 * 1000).toISOString(); // Jump 16 minutes forward
         this.update();  // Reflect changes in the countdown
       }, 200);  // Updates every 200ms for smooth fast-forwarding
@@ -87,9 +101,28 @@ export default class extends Controller {
       .padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
   }
 
+  deleteFromQueue() {
+    console.log("20min")
+    // logic - call controller method to update waiting list
+    // open appointments all - index
+    // appointments all.first - delete -> not showing anything redirect back
+    // update the order loop
+    // every update, update page without refresh
+  }
+
   update() {
     const timeData = this.getTimeData();
-    if (!timeData) return;
+    if (!timeData) {
+      // Automatically click the button when time reaches 40 minutes or less
+      if (this.modalButtonTarget) {
+      console.log("Automatically clicking the action button");
+      this.modalButtonTarget.click();
+
+      // Stop the countdown after triggering the button click
+      this.stopCountdown();
+      }
+      return
+    };
 
     const { from, to, now, status } = timeData;
 
@@ -98,6 +131,23 @@ export default class extends Controller {
       this.remainingTimeTarget.innerText = this.formatRemainingTime(
         remainingTimeInSeconds
       );
+
+      // Trigger the modal button when countdown reaches zero
+      if (remainingTimeInSeconds <= 40 * 60) {
+        console.log("Countdown finished. Triggering modal button.");
+        this.modalButtonTarget.click();
+
+        // Stop the countdown
+        clearInterval(this.timer);
+
+        return;
+      }
+
+      if (remainingTimeInSeconds % (20 * 60) === 0) {
+        // add action that will be called every 20 minutes
+        console.log("20min")
+        this.deleteFromQueue();
+      }
     }
   }
 
