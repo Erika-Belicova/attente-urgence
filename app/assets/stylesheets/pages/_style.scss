@@ -342,7 +342,7 @@ p {
   margin: 10px;
 }
 
-// test
+// new
 
 .card-trip {
   overflow: hidden;
@@ -378,14 +378,14 @@ p {
   position: relative;
 }
 
-// test
+// cards new
 
-.img-test {
+.img-new {
   width: 100%;
   border-radius: 16px 16px 0px 0px;
 }
 
-.btn-primary-home-test {
+.btn-primary-home-new {
   border-radius: 16px;
   background: #1C737B;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -404,7 +404,7 @@ p {
   border: 0px;
 }
 
-.btn-secondary-home-test {
+.btn-secondary-home-new {
   border-radius: 16px;
   background: #33B9C7;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
@@ -427,7 +427,7 @@ p {
   padding: 0;
 }
 
-.card-category-hospital-test {
+.card-category-hospital-new {
   background-size: cover;
   background-position: center;
   justify-content: center;
@@ -442,4 +442,34 @@ p {
   text-align: left;
   padding-left: 8px;
   padding-right: 8px;
+}
+
+.h2-new {
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 3%;
+  padding-bottom: 0px;
+  text-align: left;
+  justify-content: left;
+  margin: 0px;
+}
+
+.padding-card {
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 2%;
+  padding-bottom: 0px;
+}
+
+.icons-new {
+  flex: 50%;
+}
+
+.card-width {
+  padding-top: 6%;
+  width: 70%;
+}
+
+.icon-size {
+  margin-bottom: 8px;
 }

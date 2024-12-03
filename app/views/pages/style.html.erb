@@ -27,33 +27,42 @@
   <%= link_to "Third", "#", class: "btn-third" %>
 
 
-  <!--cards-->
+  <!--cards new -->
 
   <h1>Résultats</h1>
    <div class="cards-hospital">
-    <div class="card-category-hospital-test no-padding">
+    <div class="card-category-hospital-new no-padding">
       <div class="d-flex flex-column">
+        <img class="img-new" src="https://media.istockphoto.com/id/1419877131/fr/photo/fa%C3%A7ade-dun-h%C3%B4pital-dans-un-quartier-commercial-et-daffaires-sous-ciel-bleu.jpg?s=612x612&w=0&k=20&c=hEb9h2vQ-4YQUyAik2xfojHWCHF-aYOprnKTU9Q_gyM=" width="100%" height="auto">
+        <h2 class="h2-new">Hôpital Purpan Urgences</h2>
 
-          <img class="img-test" src="https://media.istockphoto.com/id/1419877131/fr/photo/fa%C3%A7ade-dun-h%C3%B4pital-dans-un-quartier-commercial-et-daffaires-sous-ciel-bleu.jpg?s=612x612&w=0&k=20&c=hEb9h2vQ-4YQUyAik2xfojHWCHF-aYOprnKTU9Q_gyM=" width="100%" height="auto">
-        <div class="hopital-details d-flex justify-content-between px-3">
-          <div class="d-flex flex-column">
-              <h2>Hopital 1</h2>
-              <p><i class="fa-solid fa-location-dot"></i> 123 rue de l'hopital</p>
+        <div class="hopital-details-new d-flex justify-content-between padding-card">
+          <div class="d-flex flex-column card-width">
+            <p class="icon-size"> 15 Rue Varsovie, 31300 Toulouse </p>
           </div>
 
-            <div class="d-flex justify-content-around flex-column">
-              <p><i class="fa-solid fa-person-walking"></i> 2km</p>
-              <p><i class="fa-solid fa-solid fa-clock"></i> 1h30</p>
-              <p><i class="fa-solid fa-solid fa-map"></i> 45min</p>
-              </div>
+          <div class="d-flex justify-content-around flex-column text-end flex-grow-1">
+            <div class="d-flex justify-content-start gap-3 icons-new">
+              <div class="flex-column"><p class="icon-size">&nbsp;<i class="fa-solid fa-person-walking"></i></p></div>
+              <div class="flex-column"><p class="icon-size"> 2 km </p></div>
+            </div>
+            <div class="d-flex justify-content-start gap-3 icons-new">
+              <div class="flex-column"><p class="icon-size"><i class="fa-solid fa-solid fa-clock"></i></p></div>
+              <div class="flex-column"><p class="icon-size"> 1h 30 </p></div>
+            </div>
+            <div class="d-flex justify-content-start gap-3 icons-new">
+              <div class="flex-column"><p class="icon-size"><i class="fa-solid fa-solid fa-map"></i></p></div>
+              <div class="flex-column"><p class="icon-size"> 45 min </p></div>
+            </div>
+          </div>
         </div>
       </div>
 
-            <div class="d-flex justify-content-around">
-              <%= link_to "Détails", "#", class: "btn-primary-home-test" %>
-              <%= link_to "Choisir", "#", class: "btn-secondary-home-test" %>
-            </div>
+      <div class="d-flex justify-content-around">
+        <%= link_to "Détails", "#", class: "btn-primary-home-new" %>
+        <%= link_to "Choisir", "#", class: "btn-secondary-home-new" %>
       </div>
+    </div>
 
 <%# <div class="cards-hospital"> %>
   <div class="cards-hospital">
