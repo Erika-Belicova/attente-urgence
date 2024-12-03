@@ -11,6 +11,7 @@ class HospitalsController < ApplicationController
       @hospitals = Hospital.all
       authorize @hospitals
     end
+
   end
 
 
@@ -18,6 +19,13 @@ class HospitalsController < ApplicationController
     @hospital = Hospital.find(params[:id])
     authorize @hospital
     @categories = @hospital.categories
+
+    @marker = {
+        lat: @hospital.latitude,
+        lng: @hospital.longitude,
+        # info_window_html: render_to_string(partial: "info_window", locals: {hospital: @hospital})
+      }
+
   end
 
   def new
@@ -27,7 +35,7 @@ class HospitalsController < ApplicationController
 
   def create
     @hospital = Hospital.new(params[:hospital])
-    @hopital.save
+    @hospital.save
     authorize @hospital
   end
 
