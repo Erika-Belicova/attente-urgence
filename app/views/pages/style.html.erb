@@ -31,53 +31,28 @@
 
   <h1>Résultats</h1>
    <div class="cards-hospital">
+    <div class="card-category-hospital-test no-padding">
+      <div class="d-flex flex-column">
 
-    <div class="card-category-hospital">
-
-      <div class="d-flex flex-column align-items-center justify-content-center">
-
-        <!--Nom de l'hopital -->
-        <h2>Hopital 1</h2>
-
-        <!--div avec deux div pour l'image à gauche et le texte et les elements à l'interieur à droite-->
-
-        <div class="hopital-details d-flex flex-column align-items-center justify-content-center">
-
-          <!--image-->
-
-          <div class='img d-flex justify-content-center'>
-            <%= image_tag 'logo.png', alt: 'Logo', style: 'width: 100%; height: auto;' %>
-          </div>
-
-          <!--div avec le texte et les elements à l'interieur-->
-
-            <div>
-              <!--texte-->
-
+          <img class="img-test" src="https://media.istockphoto.com/id/1419877131/fr/photo/fa%C3%A7ade-dun-h%C3%B4pital-dans-un-quartier-commercial-et-daffaires-sous-ciel-bleu.jpg?s=612x612&w=0&k=20&c=hEb9h2vQ-4YQUyAik2xfojHWCHF-aYOprnKTU9Q_gyM=" width="100%" height="auto">
+        <div class="hopital-details d-flex justify-content-between px-3">
+          <div class="d-flex flex-column">
+              <h2>Hopital 1</h2>
               <p><i class="fa-solid fa-location-dot"></i> 123 rue de l'hopital</p>
-
-            </div>
-
           </div>
 
-        </div>
-
-            <div class="d-flex justify-content-around">
-              <!--texte-->
+            <div class="d-flex justify-content-around flex-column">
               <p><i class="fa-solid fa-person-walking"></i> 2km</p>
               <p><i class="fa-solid fa-solid fa-clock"></i> 1h30</p>
               <p><i class="fa-solid fa-solid fa-map"></i> 45min</p>
-            </div>
-
-        <!--div boutons containers avec les deux boutons à l'interieur-->
+              </div>
+        </div>
+      </div>
 
             <div class="d-flex justify-content-around">
-              <%= link_to "Détails", "#", class: "btn-secondary" %>
-              <%= link_to "Choisir", "#", class: "btn-third" %>
+              <%= link_to "Détails", "#", class: "btn-primary-home-test" %>
+              <%= link_to "Choisir", "#", class: "btn-secondary-home-test" %>
             </div>
-
-
-
       </div>
 
 <%# <div class="cards-hospital"> %>
@@ -176,195 +151,6 @@
       </div>
       </div>
 
-  </div>
-<%# <!--ajouter elements en dessous> %>
-
-
-<%# //view-show-hospitals %>
-<%# <div class= "main-container-pixel17 main-container-content"> %>
-  <h1>Détails</h1>
-  <div class="cards-hospital">
-      <div class= "hopital-details">
-                      <div class="card-category-hospital">
-
-          <div class="d-flex flex-column align-items-center justify-content-center">
-
-            <!--Nom de l'hopital -->
-            <h2>CHU Rangueil</h2>
-
-            <!--div avec deux div pour l'image à gauche et le texte et les elements à l'interieur à droite-->
-
-            <div class="hopital-details d-flex flex-column align-items-center justify-content-center">
-
-              <!--image-->
-              <div class='img d-flex justify-content-center'>
-                <%= image_tag 'logo.png', alt: 'Logo', style: 'width: 100%; height: auto;' %>
-              </div>
-              <!--div avec le texte et les elements à l'interieur-->
-
-
-                <div>
-                  <!--texte-->
-                  <p><i class="fa-solid fa-location-dot"></i> Pl. du Dr Joseph</p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-                <div class="d-flex justify-content-around">
-                  <!--texte-->
-                  <p><i class="fa-solid fa-person-walking"></i> 2km</p>
-                  <p><i class="fa-solid fa-solid fa-clock"></i> 1h30</p>
-                  <p><i class="fa-solid fa-solid fa-map"></i> 45min</p>
-                </div>
-
-
-                </div>
-              </div>
-
-               <div class="cards-hospital">
-                  <div class= "card-category-hospital">
-                      <h2>Spécialités</h2>
-
-                      <div>
-
-
-                      <div class= "specialities">
-                      <%#= link_to "Neurologie", "#", class: "btn-specialty-1" %>
-                      <%#= link_to "Pédiatrie", "#", class: "btn-specialty-2" %>
-<!--                      </div>
-                      <div class= "specialities">
-                      <%#= link_to "Cardiologie", "#", class: "btn-specialty-3" %>-->
-                      <%#= link_to "Pneumologie", "#", class: "btn-specialty-4" %>
-                      </div>
-                      </div>
-
-                  </div>
-               </div>
-              <div class="cards-hospital">
-                <div class= "card-category-hospital">
-                  <h2>Localisation</h2>
-                  <div class='img d-flex justify-content-center '>
-                <%= image_tag 'Hospital-pix/itinirary-mini.png', alt: 'Itinirary-mini', style: 'width: 100%; height: auto; overflow: hidden; border-bottom-left-radius: 16px; border-bottom-right-radius: 16px;' %>
-                </div>
-                </div>
-              </div>
-
-                  <div class="d-flex justify-content-around">
-                      <%= link_to "Retour", "#", class: "btn-secondary" %>
-                      <%= link_to "Choisir", appointments_path, class: "btn-third" %>
-                  </div>
-
-
-      </div>
-  <%# </div> %>
-
-
-
-
-
-<%# show-appointment-confirmation %>
-<div class= "cards-hospital">
-        <div class= "card-category-alert " >
-          <p><i class="fa-sharp fa-solid fa-circle-check icon-big"></i></p>
-            <h1>Vous allez être pris en charge </h1>
-        </div>
-    </div>
-
-<div class= "cards-hospital">
-        <div class= "card-category-alert" >
-          <h2> Veuillez présenter ce QR code au secrétariat dès votre arrivée. Activez vos notifications...</h2>
-        </div>
-    </div>
-
-<div class= "cards-hospital">
-        <div class= "card-category-alert img">
-          <%= image_tag 'Hospital-pix/qr-code.png', alt: 'Qr code', class: "img" %>
-        </div>
-</div>
-
-<div class= "cards-hospital ">
-      <div class= "card-category-alert">
-         <div class="d-flex justify-content-around">
-                      <%= link_to "Prenez la route !", "#", class: "btn-third-big img h4" %>
-                  </div>
-      </div>
-</div>
-
-
-
-
-
-
-<%# show-appointment-alert %>
-<%# <div class= "main-container-pixel17 main container-content"> %>
-
-    <div class= "cards-hospital">
-        <div class= "card-category-alert " >
-          <p><i class="fa-solid fa-bell icon-big"></i></p>
-            <h1>Vous pouvez prendre la route !</h1>
-        </div>
-    </div>
-
-<div class= "cards-hospital">
-        <div class= "card-category-alert" >
-          <h2><i class="fa-solid fa-hospital small-icon"></i> Il reste 4 personnes avant vous</h2>
-        </div>
-    </div>
-
-      <div class= "cards-hospital">
-        <div class= "card-category-alert" >
-          <h2><i class="fa-solid fa-map-location-dot small-icon"></i> Vous avez 33 minutes de routes</h2>
-        </div>
-    </div>
-
-<div class= "cards-hospital">
-        <div class= "card-category-alert" >
-          <h2><i class="fa-sharp fa-solid fa-magnifying-glass-location small-icon"></i> Rejoignez le CHU Rangueil au 1 Av du professeur Jean Poulhès, 31400 Toulouse </h2>
-        </div>
-    </div>
-
-<div class= "cards-hospital">
-        <div class= "card-category-alert img">
-          <%= image_tag 'Hospital-pix/qr-code.png', alt: 'Qr code', class: "img" %>
-        </div>
-</div>
-
-<div class= "cards-hospital ">
-      <div class= "card-category-alert">
-         <div class="d-flex justify-content-around">
-                      <%= link_to "Prenez la route !", "#", class: "btn-third-big img h4" %>
-                  </div>
-      </div>
-</div>
-
-
-<%# show-map %>
-
-
-<div class= "cards-hospital">
-        <div class= "card-category-alert img">
-          <%= image_tag 'Hospital-pix/itinirary.jpg', alt: 'Itinirary', class: "img" %>
-        </div>
-</div>
-
-<div class= "cards-hospital ">
-      <div class= "card-category-alert">
-         <div class="d-flex justify-content-around">
-                      <%= link_to "Olocal, 18 Port Etienne", "#", class: "btn-third-big img h4" %>
-                  </div>
-      </div>
-</div>
-<div class= "cards-hospital ">
-      <div class= "card-category-alert">
-         <div class="d-flex justify-content-around">
-                      <%= link_to "CHU Rangueil, pl St Joseph", "#", class: "btn-third-big img h4" %>
-                  </div>
-      </div>
 </div>
 
 </div>
-
-<%# </div> %>
