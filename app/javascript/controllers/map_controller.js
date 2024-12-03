@@ -10,7 +10,7 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log("Map connected")
+
 
     const options = {
       enableHighAccuracy: true,
@@ -50,6 +50,3 @@ export default class extends Controller {
   }
 
 }
-
-
-

@@ -1,6 +1,11 @@
 <div class= "cards-hospital">
         <div class= "card-category-alert img">
-          <%= image_tag 'Hospital-pix/itinirary.jpg', alt: 'Itinirary', class: "img" %>
+          <%#= image_tag 'Hospital-pix/itinirary.jpg', alt: 'Itinirary', class: "img" %>
+          <div style="width: 100%; height: 600px;"
+                      data-controller="itinerary"
+                      data-itinerary-marker-value="<%= @marker.to_json %>"
+                      data-itinerary-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
         </div>
 </div>
 

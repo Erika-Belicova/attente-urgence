@@ -80,8 +80,8 @@
                 </div>
               </div>
             <div class="d-flex justify-content-around">
-              <%= button_to "Retour", hospitals_path, method: :get, class: "btn-secondary" %>
-              <%= button_to "Choisir", appointments_path, method: :post, class: "btn-third" %>
+              <%= button_to "Retour", hospitals_path, method: :get, class: "btn-secondary", params: {category: params[:category]}%>
+              <%= button_to "Choisir", appointments_path, method: :post, class: "btn-third", params: { hospital_id: @hospital.id, category: params[:category]}%>
             </div>
       </div>
   </div>
