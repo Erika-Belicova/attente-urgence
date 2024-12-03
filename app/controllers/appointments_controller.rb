@@ -6,11 +6,16 @@ class AppointmentsController < ApplicationController
     authorize @appointments
   end
 
+  def appointment_params
+    params.require(:appointment).permit(:name, :addres, :qd_code)
+  end
+
   def show
     @appointment = Appointment.find(params[:id])
     @appointments = Appointment.all
     @hospital = @appointment.hospital
     @waiting_list = []
+    @qr_code = RQRCode::QRCode.new(@appointment.qr_code)
     @appointments.each do |appointment|
       @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at &&
                                                                     @appointment.checked_in_patient == false
