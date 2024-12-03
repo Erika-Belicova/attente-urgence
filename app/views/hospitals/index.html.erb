@@ -47,8 +47,8 @@
           <!--div boutons containers avec les deux boutons à l'interieur-->
 
               <div class="d-flex justify-content-around">
-                <%= button_to "Détails", hospital_path(hospital), method: :get, class: "btn-secondary" %>
-                <%= button_to "Choisir", appointments_path, method: :post, class: "btn-third" %>
+                <%= button_to "Détails", hospital_path(hospital), method: :get, class: "btn-secondary", params: { category: params[:category]} %>
+                <%= button_to "Choisir", appointments_path, method: :post, class: "btn-third", params: { hospital_id: hospital.id, category: params[:category]} %>
               </div>
 
         </div>

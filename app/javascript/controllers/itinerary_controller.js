@@ -16,8 +16,8 @@ export default class extends Controller {
 
     const options = {
       enableHighAccuracy: true,
-      maximumAge: 10000,
-      timeout: 10000,
+      maximumAge: 50000,
+      timeout: 100000,
     }
 
     mapboxgl.accessToken = this.apiKeyValue
@@ -26,7 +26,7 @@ export default class extends Controller {
       container: this.element,
       center: [this.markerValue.lng, this.markerValue.lat],
       style: "mapbox://styles/mapbox/standard",
-      zoom: 17
+      zoom: 8
     })
 
     this.map.on('load', () => {
@@ -155,7 +155,7 @@ export default class extends Controller {
     // this.markerValue.forEach(marker =>
       bounds.extend([ this.markerValue.lng, this.markerValue.lat ])
     //)
-    this.map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 })
+    this.map.fitBounds(bounds, { padding: 70, maxZoom: 12, duration: 3 })
   }
 
 }

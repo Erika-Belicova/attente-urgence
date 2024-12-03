@@ -38,15 +38,18 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    @appointment = Appointment.new
 
-    @appointment.hospital = Hospital.last
-    @appointment.category = Category.last
+    @appointment = Appointment.new
+    @hospital = Hospital.find(params[:hospital_id])
+    @appointment.hospital = @hospital
+    @appointment.category = Category.find_by(name: params[:category]) || @hospital.categories.first
     @appointment.patient = current_patient
-    @appointment.latitude = 1.0
-    @appointment.longitude = 1.0
+    @appointment.latitude = @hospital.latitude
+    @appointment.longitude = @hospital.longitude
     @appointment.checked_in_patient = false
     @appointment.save!
+
+
     @id = @appointment.id
     authorize @appointment
     redirect_to appointment_path(@appointment)
@@ -67,7 +70,7 @@ class AppointmentsController < ApplicationController
       lng: longitude,
     }
   end
-  
+
   def arrived
     @patient = current_patient
     # @appointment.checked_in_patient
