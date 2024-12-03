@@ -87,12 +87,16 @@ h3.time-appointment {
   padding-top: 5px;
   padding-bottom: 5px;
   border-style: solid;
-  border-width: 5px;
+  border-width: 1px;
   border-color: rgba(52, 62, 69, 0.25);
   width: 100%;
   border-radius: 0 0 16px 16px;
   background-color: white;
-justify-content: center;
+  justify-content: center;
+}
+
+.no-padding {
+  padding: 0;
 }
 
 h3.time {
@@ -102,7 +106,10 @@ h3.time {
 }
 
 #waiting-list-card {
-  padding: 7%;
+  padding-left: 7%;
+  padding-right: 7%;
+  padding-top: 5%;
+  padding-bottom: 5%;
   margin-top: 5%;
   margin-bottom: 5%;
   border: rgba(52, 62, 69, 1);
@@ -111,7 +118,7 @@ h3.time {
   width: 90%;
   height: 90%;
   border-radius: 16px;
-  height: 20vh;
+  height: 18vh;
   overflow:scroll;
   overflow-x:hidden;
 }
@@ -130,4 +137,16 @@ p.entry {
 
 .float-container {
   width: 100%;
+}
+
+.modal-body {
+  font-size: 20;
+}
+
+.h1-modal {
+  font-size: 28px;
+}
+
+.h2-modal {
+  font-size: 24px;
 }

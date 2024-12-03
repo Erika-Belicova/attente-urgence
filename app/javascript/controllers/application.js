@@ -12,5 +12,5 @@ window.Stimulus   = application
 
 export { application }
 
-import CountdownController from "./countdown_controller.js"
-Stimulus.register("countdown", CountdownController)
+// import CountdownController from "./countdown_controller.js"
+// Stimulus.register("countdown", CountdownController)
