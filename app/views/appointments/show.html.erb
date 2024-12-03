@@ -1,12 +1,5 @@
-
-
-
-<body>
-
 <!--<div class="main-container-pixel7 main-container-content">-->
 <div class="appointment-scroll">
-
-
   <h1>File d'attente</h1>
   <div class="cards-hospital">
 
@@ -81,23 +74,18 @@
                 <!-- Fast Forward Toggle Button (Real button) -->
                 <button data-countdown-target="fastForwardToggle"
                       style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0); border: none; cursor: pointer;">
-
                 </button>
+
               </div>
+
+              <!-- Button trigger modal -->
+              <!-- button pour le modal doit être là pour être accessible pour le data-controller, CSS -> display:none -->
+              <button id="modal-button" data-countdown-target="modalButton" type="button" data-bs-toggle="modal" data-bs-target="#exampleModal"></button>
             </div>
           </div>
         </div>
       </div>
     </div>
-
-
-    <!-- Button trigger modal -->
-    <div class="d-flex justify-content-around">
-      <button type="button" class="btn-primary-appointment" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Continuer
-      </button>
-    </div>
-
   </div>
 
   <!-- Modal -->
@@ -106,7 +94,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
         </div>
         <div class="modal-body">
 
@@ -129,7 +117,7 @@
               <div class= "card-category-alert" >
                 <!-- récuperer la bonne valeur -->
                 <% @duration = 30 %>
-                <h2 class="h2-modal"><i class="fa-solid fa-map-location-dot small-icon"></i> Vous avez <%= @duration %> minutes de routes</h2>
+                <h2 class="h2-modal"><i class="fa-solid fa-map-location-dot small-icon"></i> Vous avez <%= @duration %> minutes de route</h2>
               </div>
             </div>
 
@@ -152,6 +140,7 @@
                 </div>
               </div>
             </div>
+
           <!--</div> container pixel 7 -->
 
         </div>
@@ -163,5 +152,3 @@
 
 <!--</div>-->
 </div>
-
-</body>
