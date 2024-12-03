@@ -1,8 +1,8 @@
 <!--cards-->
-
+ <div data-controller="geoloc">
+</div>
 
    <div class="cards-hospital">
-
 
     <% @hospitals.each do |hospital| %>
 
@@ -39,7 +39,8 @@
 
               <div class="d-flex justify-content-around">
                 <!--texte-->
-                <p><i class="fa-solid fa-person-walking"></i> 2km</p>
+                <%= raise %>
+                <!--<p><i class="fa-solid fa-person-walking"></i> <%#= hospital.distance_to(@localisation).round %></p>-->
                 <p><i class="fa-solid fa-solid fa-clock"></i> 1h30</p>
                 <p><i class="fa-solid fa-solid fa-map"></i> 45min</p>
               </div>

@@ -11,7 +11,7 @@ class HospitalsController < ApplicationController
       @hospitals = Hospital.all
       authorize @hospitals
     end
-
+    @localisation = params[:localisation]
   end
 
 
