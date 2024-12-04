@@ -15,9 +15,15 @@ class AppointmentsController < ApplicationController
     @hospital = @appointment.hospital
     @waiting_list = []
     @appointments.each do |appointment|
-      @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at
+      puts appointment
+      @waiting_list.push(appointment) if (appointment.created_at <= @appointment.created_at) &&
+                                            (appointment.checked_in_patient == false)
     end
-    # (appointment.created_at <= @appointment.created_at) &&
+
+    raise
+
+    @leaves_queue = @waiting_list.first
+
     # test start
 
     @time_per_patient = 20
@@ -33,6 +39,7 @@ class AppointmentsController < ApplicationController
 
     # test end
     authorize @appointment
+
   end
 
   def new
@@ -41,6 +48,7 @@ class AppointmentsController < ApplicationController
   end
 
   def create
+
     @appointment = Appointment.new
     @hospital = Hospital.find(params[:hospital_id])
     @appointment.hospital = @hospital
@@ -54,9 +62,12 @@ class AppointmentsController < ApplicationController
     @id = @appointment.id
     authorize @appointment
     redirect_to appointment_path(@appointment)
+
+
   end
 
   def destroy
+    @appointment = Appointment.find(params[:id])
     @appointment.checked_in_patient = true
     authorize @appointment
     @appointment.destroy
@@ -66,19 +77,19 @@ class AppointmentsController < ApplicationController
 
   def delete_from_queue
     @appointments = @appointment.hospital.appointments
-    raise
+    @hospital = @appointment.hospital
     @waiting_list = []
     @appointments.each do |appointment|
-      @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at
+      @waiting_list.push(appointment) if (appointment.created_at <= @appointment.created_at) &&
+                                            (@appointment.checked_in_patient == false)
     end
 
-    if @waiting_list.length > 2
-      @waiting_list.first.checked_in_patient = true
-      @waiting_list.first.destroy
-    end
+
+    @waiting_list.first.destroy
     # @appointment.destroy
 
-    redirect_to appointment_path(@appointment), status: :see_other
+    redirect_to appointment_path(@appointment)
+
   end
 
   def map
