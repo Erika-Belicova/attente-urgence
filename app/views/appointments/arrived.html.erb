@@ -12,18 +12,22 @@
     </div>
   </div>
 
+
   <div class= "cards-hospital">
-    <div class= "card-category-alert img">
-      <%= image_tag 'Hospital-pix/qr-code.png', alt: 'Qr code', class: "img" %>
+    <div class= "card-category-hospital img-qrcode">
+        <div class="container my-5 ">
+                <%= @svg.html_safe %>
+     </div>
+
     </div>
   </div>
+</div>
 
   <div class= "cards-hospital ">
     <div class= "card-category-alert">
       <div class="d-flex justify-content-around">
-        <%= link_to "Confirmation", appointment_path(@appointment),
-          data: {turbo_method: :delete, turbo_confirm: "Avez-vous déjà été pris en charge ?"}, class: "btn-third img h4" %>
+        <%= link_to "Confirmation", appointment_path(@appointment), data: {turbo_method: :delete, turbo_confirm: "Avez-vous déjà été pris en charge ?"}, class: "btn-third img h4" %>
       </div>
     </div>
   </div>
-</div>
+<div class="footer-space"></div>

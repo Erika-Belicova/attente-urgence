@@ -84,3 +84,4 @@ end
 
 
 gem "geocoder"
+gem 'rqrcode'
