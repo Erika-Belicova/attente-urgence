@@ -56,7 +56,7 @@
     <div class="card-category-hospital no-padding mt-2">
       <div class="d-flex flex-column align-items-center justify-content-center">
         <div id="time-header" class="d-flex flex-column align-items-center justify-content-center">
-          <h3 class="time-appointment">temps estimé</h3>
+          <h3 class="time-appointment">Temps estimé</h3>
         </div>
 
         <div id="time-value" class="d-flex flex-column align-items-center justify-content-center">
@@ -138,7 +138,7 @@
             <div class= "cards-hospital ">
               <div class= "card-category-alert">
                 <div class="d-flex justify-content-around">
-                  <%= button_to "Prenez la route !", appointment_map_path(@appointment), method: :get, class: "btn-primary-home" %>
+                  <%= button_to "Prenez la route !", appointment_map_path(@appointment), method: :get, class: "btn-primary-home", params: { appointment_id: @appointment.id}%>
                 </div>
               </div>
             </div>

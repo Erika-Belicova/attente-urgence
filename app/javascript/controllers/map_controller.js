@@ -11,7 +11,6 @@ export default class extends Controller {
 
   connect() {
 
-
     const options = {
       enableHighAccuracy: true,
       maximumAge: 10000,
