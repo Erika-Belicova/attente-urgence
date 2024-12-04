@@ -25,8 +25,8 @@ doctor_nb: 20,
 latitude: "43.608888630492004",
 longitude: "1.4014851981476228",
 )
-puran_photo = File.read("app/assets/images/Hospital-pix/purpan.jpg")
-purpan.photo.attach(io: StringIO.new(puran_photo), filename: 'purpan.jpg', content_type: 'image/jpg')
+puran_photo = File.read("app/assets/images/Hospital-pix/purpan2.jpg")
+purpan.photo.attach(io: StringIO.new(puran_photo), filename: 'purpan2.jpg', content_type: 'image/jpg')
 purpan.save!
 
 viguier = Hospital.new(
