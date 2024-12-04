@@ -52,10 +52,8 @@
         </div>
       </div>
     </div>
-
-    <%= link_to "Delete", appointment_delete_from_queue_path(@appointment), method: :get %>
-    <%= button_to "Delete", appointment_path(@leaves_queue), method: :delete, class: "btn btn-danger" %>
-
+    <%= @waiting_list.first %>
+    <%= link_to "Delete", appointment_delete_from_queue_path(@appointment), params: {leaves_id: @leaves_queue.id}, method: :get %>
 
     <div class="card-category-hospital no-padding mt-2">
       <div class="d-flex flex-column align-items-center justify-content-center">

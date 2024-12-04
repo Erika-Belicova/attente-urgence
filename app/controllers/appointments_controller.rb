@@ -16,11 +16,9 @@ class AppointmentsController < ApplicationController
     @waiting_list = []
     @appointments.each do |appointment|
       puts appointment
-      @waiting_list.push(appointment) if (appointment.created_at <= @appointment.created_at) &&
-                                            (appointment.checked_in_patient == false)
+      @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at && appointment.hospital == @appointment.hospital && appointment.checked_in_patient == false # <= @appointment.created_at) &&
+                                        #    (appointment.checked_in_patient == false)
     end
-
-    raise
 
     @leaves_queue = @waiting_list.first
 
@@ -76,14 +74,18 @@ class AppointmentsController < ApplicationController
   end
 
   def delete_from_queue
+    @test = @leaves_queue
+    @test1 = @appointment
+
+    raise
     @appointments = @appointment.hospital.appointments
     @hospital = @appointment.hospital
     @waiting_list = []
     @appointments.each do |appointment|
-      @waiting_list.push(appointment) if (appointment.created_at <= @appointment.created_at) &&
-                                            (@appointment.checked_in_patient == false)
+      puts appointment
+      @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at && appointment.hospital == @appointment.hospital && appointment.checked_in_patient == false # <= @appointment.created_at) &&
+                                        #    (appointment.checked_in_patient == false)
     end
-
 
     @waiting_list.first.destroy
     # @appointment.destroy
