@@ -15,7 +15,6 @@ class AppointmentsController < ApplicationController
     @appointments = Appointment.all
     @hospital = @appointment.hospital
     @waiting_list = []
-    @qr_code = RQRCode::QRCode.new(@appointment.qr_code)
     @appointments.each do |appointment|
       @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at &&
                                                                     @appointment.checked_in_patient == false
@@ -79,8 +78,16 @@ class AppointmentsController < ApplicationController
   end
 
   def arrived
+
     @id = @appointment.id
     @patient = current_patient
+    @qr_code = RQRCode::QRCode.new(@appointment.id.to_s)
+    @svg = @qr_code.as_svg(
+      offset: 0,
+      color: '000',
+      shape_rendering: 'crispEdges',
+      standalone: true
+    )
     # @appointment.checked_in_patient
   end
 
