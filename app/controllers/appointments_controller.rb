@@ -51,10 +51,11 @@ class AppointmentsController < ApplicationController
     @appointment.checked_in_patient = false
     @appointment.save!
 
-
     @id = @appointment.id
     authorize @appointment
     redirect_to appointment_path(@appointment)
+
+
   end
 
   def destroy

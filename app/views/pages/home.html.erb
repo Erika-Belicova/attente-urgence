@@ -1,12 +1,11 @@
-  <h1>AttenteUrgence</h1>
+<h1>AttenteUrgence</h1>
 
-    <div class="background">
-    <!-- contient l'image de fond -->
-    </div>
+<div class="background">
+  <!-- contient l'image de fond -->
+</div>
 
-
-<div class="form-container-home">
-  <%= form_with url: hospitals_path, method: :get, local: true, html: { class: "center-form center-field" } do %>
+<div class="form-container-home" data-controller="geoloc">
+  <%= form_with url: hospitals_path, method: :get, local: true, html: { class: "center-form center-field", data: { target: "geoloc.form" } } do %>
     <!-- Dropdown pour filtrer par catégorie -->
     <div class="center-form dropdown">
       <%= select_tag :category, options_for_select([['Catégorie', '']] +
@@ -19,8 +18,12 @@
     <!-- Champ texte pour filtrer par adresse -->
     <div class="center-form">
       <label for="adresse"></label>
-      <%= text_field_tag :address, params[:address], id: 'adresse', placeholder: 'Adresse', class: 'form-control' %>
+      <%= text_field_tag :address, params[:address], id: 'adresse', placeholder: 'Adresse', class: 'form-control', data: { target: "geoloc.inputLocation" } %>
     </div>
+
+    <!-- Champs cachés pour les coordonnées -->
+    <%= hidden_field_tag :latitude, params[:latitude], id: 'latitude', data: { target: "geoloc.latitudeField" } %>
+    <%= hidden_field_tag :longitude, params[:longitude], id: 'longitude', data: { target: "geoloc.longitudeField" } %>
 
     <!-- Bouton de recherche -->
     <div class="btn-form-home">

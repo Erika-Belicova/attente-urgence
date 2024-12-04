@@ -1,6 +1,4 @@
 <%#= cl_image_tag @hospital.photo.key, height: 300, width: 400, crop: :fill %>
-
-
 <!--<div class= "main-container-pixel17 main-container-content">-->
   <h1>Détails</h1>
   <div class="cards-hospital">
@@ -35,9 +33,9 @@
 
                 <div class="d-flex justify-content-around">
                   <!--texte-->
-                  <p><i class="fa-solid fa-person-walking"></i> 2km</p>
+                  <p><i class="fa-solid fa-person-walking"></i> <%= @hospital.distance_to([@latitude, @longitude]).round %> km</p>
                   <p><i class="fa-solid fa-solid fa-clock"></i> 1h30</p>
-                  <p><i class="fa-solid fa-solid fa-map"></i> 45min</p>
+                  <p><i class="fa-solid fa-solid fa-map"></i> <%= @hospital.distance_to([@latitude, @longitude]).round * 5 %> min</p>
                 </div>
 
 

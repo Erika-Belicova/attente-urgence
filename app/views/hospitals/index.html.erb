@@ -1,3 +1,4 @@
+
 <!--cards-->
  <div data-controller="geoloc">
 </div>
@@ -39,16 +40,15 @@
 
               <div class="d-flex justify-content-around">
                 <!--texte-->
-                <%= raise %>
-                <!--<p><i class="fa-solid fa-person-walking"></i> <%#= hospital.distance_to(@localisation).round %></p>-->
+                <p><i class="fa-solid fa-person-walking"></i> <%= hospital.distance_to([@latitude, @longitude]).round %> km</p>
                 <p><i class="fa-solid fa-solid fa-clock"></i> 1h30</p>
-                <p><i class="fa-solid fa-solid fa-map"></i> 45min</p>
+                <p><i class="fa-solid fa-solid fa-map"></i> <%= hospital.distance_to([@latitude, @longitude]).round * 5 %> min</p>
               </div>
 
           <!--div boutons containers avec les deux boutons à l'interieur-->
 
               <div class="d-flex justify-content-around">
-                <%= button_to "Détails", hospital_path(hospital), method: :get, class: "btn-secondary", params: { category: params[:category]} %>
+                <%= button_to "Détails", hospital_path(hospital), method: :get, class: "btn-secondary", params: { category: params[:category], latitude: @latitude, longitude: @longitude} %>
                 <%= button_to "Choisir", appointments_path, method: :post, class: "btn-third", params: { hospital_id: hospital.id, category: params[:category]} %>
               </div>
 
