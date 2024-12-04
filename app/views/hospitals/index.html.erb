@@ -1,57 +1,50 @@
 <!--cards-->
 
-
    <div class="cards-hospital">
-
 
     <% @hospitals.each do |hospital| %>
 
-      <div class="card-category-hospital">
-
-        <div class="d-flex flex-column align-items-center justify-content-center">
-
-
-          <!--Nom de l'hopital -->
-          <h3 class="pt-3"><%= hospital.name %></h3>
-
-          <!--div avec deux div pour l'image à gauche et le texte et les elements à l'interieur à droite-->
-
-          <div class="hopital-details d-flex flex-column align-items-center justify-content-center">
-
+        <div class="card-category-hospital-new no-padding">
+          <div class="d-flex flex-column">
             <!--image-->
-            <div class='img d-flex justify-content-center'>
-              <%= cl_image_tag hospital.photo.key, height: 60, width: 60, crop: :fill %>
+            <div class="d-flex justify-content-center img-card">
+              <%= cl_image_tag hospital.photo.key, crop: :fill, radius: "16:16:0:0", width: 375, height: 280, gravity: :north %>
             </div>
 
+            </div>
+            <!--Nom de l'hopital -->
+            <h2 class="h2-new"> <%= hospital.name %> </h2>
 
-            <!--div avec le texte et les elements à l'interieur-->
-
-
-              <div>
-                <!--texte-->
-                <p><i class="fa-solid fa-location-dot"></i>&nbsp;<%= hospital.address %></p>
-
+            <div class="hopital-details-new d-flex justify-content-between padding-card">
+              <div class="d-flex flex-column card-width">
+                <p class="icon-size address-card"> <%= hospital.address %> </p>
               </div>
 
+              <div class="d-flex justify-content-around flex-column text-end flex-grow-1">
+                <div class="d-flex justify-content-start gap-3 icons-new">
+                  <div class="flex-column"><p class="icon-size">&nbsp;<i class="fa-solid fa-person-walking"></i></p></div>
+                  <div class="flex-column"><p class="icon-size"> 2 km </p></div>
+                </div>
+                <div class="d-flex justify-content-start gap-3 icons-new">
+                  <div class="flex-column"><p class="icon-size"><i class="fa-solid fa-solid fa-clock"></i></p></div>
+                  <div class="flex-column"><p class="icon-size"> 1h 30 </p></div>
+                </div>
+                <div class="d-flex justify-content-start gap-3 icons-new">
+                  <div class="flex-column"><p class="icon-size"><i class="fa-solid fa-solid fa-map"></i></p></div>
+                  <div class="flex-column"><p class="icon-size"> 45 min </p></div>
+                </div>
+              </div>
             </div>
 
+            <div class="d-flex justify-content-between buttons-card">
+              <%= button_to "Détails", hospital_path(hospital), class: "btn-primary-home-new" %>
+              <%= button_to "Choisir", appointments_path, method: :post, class: "btn-secondary-home-new" %>
+            </div>
           </div>
-
-              <div class="d-flex justify-content-around">
-                <!--texte-->
-                <p><i class="fa-solid fa-person-walking"></i> 2km</p>
-                <p><i class="fa-solid fa-solid fa-clock"></i> 1h30</p>
-                <p><i class="fa-solid fa-solid fa-map"></i> 45min</p>
-              </div>
-
-          <!--div boutons containers avec les deux boutons à l'interieur-->
-
-              <div class="d-flex justify-content-around">
-                <%= button_to "Détails", hospital_path(hospital), method: :get, class: "btn-secondary" %>
-                <%= button_to "Choisir", appointments_path, method: :post, class: "btn-third" %>
-              </div>
-
         </div>
 
       <% end %>
     </div>
+  </div>
+
+<!-- cards-end -->

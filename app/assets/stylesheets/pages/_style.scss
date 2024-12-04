@@ -342,48 +342,7 @@ p {
   margin: 10px;
 }
 
-// new
-
-.card-trip {
-  overflow: hidden;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-}
-
-.card-trip > img {
-  height: 200px;
-  width: 100%;
-  object-fit: cover;
-}
-
-.card-trip h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.card-trip p {
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-  border-radius: 16px;
-}
-
-
-.card-trip .card-trip-infos {
-  padding: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
-}
-
-// cards new
-
-.img-new {
-  width: 100%;
-  border-radius: 16px 16px 0px 0px;
-}
+// hospital card new
 
 .btn-primary-home-new {
   border-radius: 16px;
@@ -442,22 +401,25 @@ p {
   text-align: left;
   padding-left: 8px;
   padding-right: 8px;
+  margin: 0 20px 20px 20px;
+  width: 90%;
+  overflow: hidden;
 }
 
 .h2-new {
-  padding-left: 4%;
-  padding-right: 4%;
-  padding-top: 3%;
-  padding-bottom: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 15px;
+  padding-bottom: 5px;
   text-align: left;
   justify-content: left;
   margin: 0px;
 }
 
 .padding-card {
-  padding-left: 4%;
-  padding-right: 4%;
-  padding-top: 2%;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 6px;
   padding-bottom: 0px;
 }
 
@@ -466,10 +428,36 @@ p {
 }
 
 .card-width {
-  padding-top: 6%;
+  padding-top: 18px;
   width: 70%;
 }
 
 .icon-size {
   margin-bottom: 8px;
+}
+
+.img-card {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+  padding: 4px;
+  overflow: hidden;
+  max-height: 100%;
+  border-radius: 16px 16px 0px 0px;
+  padding: 0px;
+}
+
+.buttons-card {
+  margin: 0 12px 0 12px;
+}
+
+.address-card {
+  padding-left: 5px;
+  margin-right: 8px;
 }
