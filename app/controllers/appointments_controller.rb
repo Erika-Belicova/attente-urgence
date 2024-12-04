@@ -6,6 +6,10 @@ class AppointmentsController < ApplicationController
     authorize @appointments
   end
 
+  def appointment_params
+    params.require(:appointment).permit(:name, :addres, :qd_code)
+  end
+
   def show
     @appointment = Appointment.find(params[:id])
     @appointments = Appointment.all
@@ -75,8 +79,16 @@ class AppointmentsController < ApplicationController
   end
 
   def arrived
+
     @id = @appointment.id
     @patient = current_patient
+    @qr_code = RQRCode::QRCode.new(@appointment.id.to_s)
+    @svg = @qr_code.as_svg(
+      offset: 0,
+      color: '000',
+      shape_rendering: 'crispEdges',
+      standalone: true
+    )
     # @appointment.checked_in_patient
   end
 
