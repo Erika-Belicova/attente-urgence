@@ -23,7 +23,7 @@ export default class extends Controller {
     this.map = new mapboxgl.Map({
       container: this.element,
       center: [this.markerValue.lng, this.markerValue.lat],
-      style: "mapbox://styles/mapbox/standard",
+      style: "mapbox://styles/mapbox/navigation-day-v1",
       zoom: 17
     })
 

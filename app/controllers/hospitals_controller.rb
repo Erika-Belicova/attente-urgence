@@ -1,16 +1,15 @@
 class HospitalsController < ApplicationController
-  # def index
-  #   @hospitals = Hospital.all
-  #   authorize @hospitals
-  # end
-
   def index
     if params[:category].present?
       @hospitals = Hospital.joins(:categories).where(categories: { name: params[:category] })
     else
       @hospitals = Hospital.all
-      authorize @hospitals
     end
+
+    @latitude = params[:latitude]
+    @longitude = params[:longitude]
+
+    authorize @hospitals
 
   end
 
@@ -25,6 +24,9 @@ class HospitalsController < ApplicationController
         lng: @hospital.longitude,
         # info_window_html: render_to_string(partial: "info_window", locals: {hospital: @hospital})
       }
+
+      @latitude = params[:latitude]
+      @longitude = params[:longitude] 
 
   end
 
