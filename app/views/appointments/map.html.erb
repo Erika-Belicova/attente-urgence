@@ -1,32 +1,34 @@
+
 <div class= "map-container">
+  <div class="d-flex justify-content-center mt-3">
+    <p>En route vers <%= @appointment.hospital.name %>, <%= @appointment.hospital.address %></p>
+  </div>
     <div class= "card-category-alert img">
             <%#= image_tag 'Hospital-pix/itinirary.jpg', alt: 'Itinirary', class: "img" %>
-      <div class="rounded-3" style="width: 100%; height: 550px;"
+      <div class="rounded-3" style="width: 100%; height: 350px; border-radius: 16px;"
                         data-controller="itinerary"
                         data-itinerary-marker-value="<%= @marker.to_json %>"
-                        data-itinerary-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
-                        data-itinerary-start-address-value="Start Address, City, Country"
-                        data-itinerary-end-address-value="End Address, City, Country">
+                        data-itinerary-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
       </div>
     </div>
 </div>
 
-<div class= "d-flex justify-content-center">
+<!--<div class= "d-flex justify-content-center">
     <div class= "btn-container ">
         <div class="d-flex justify-content-center">
-            <%= link_to "Olocal, 18 Port Etienne", "#", class: "btn-third-big img h4" %>
-          </div>
+            <%#= link_to @hospital, "#", class: "btn-third-big img h4" %>-->
+<!--          </div>
       </div>
-</div>
+</div>-->
 
-<div class= "d-flex justify-content-center">
+<!--<div class= "d-flex justify-content-center">
   <div class= "btn-container">
     <div class="d-flex justify-content-center">
-      <%= link_to "CHU Rangueil, pl St Joseph", "#", class: "btn-third-big img h4" %>
-    </div>
+      <%#= @hospital.name, class: "btn-third-big img h4" %>-->
+<!--    </div>
   </div>
 </div>
-
+-->
 <div class="d-flex justify-content-center">
   <%= button_to "Arrivé", appointment_arrived_path(@appointment), method: :get, class: "btn-secondary" %>
 </div>
