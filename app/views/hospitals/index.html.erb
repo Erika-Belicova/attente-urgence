@@ -37,7 +37,7 @@
             </div>
 
             <div class="d-flex justify-content-between buttons-card">
-              <%= button_to "Détails", hospital_path(hospital), class: "btn-primary-home-new", params: { category: params[:category], latitude: @latitude, longitude: @longitude} %>
+              <%= button_to "Détails", hospital_path(hospital), method: :get, class: "btn-primary-home-new", params: { category: params[:category], latitude: @latitude, longitude: @longitude} %>
               <%= button_to "Choisir", appointments_path, method: :post, class: "btn-secondary-home-new", params: { hospital_id: hospital.id, category: params[:category]} %>
             </div>
           </div>
