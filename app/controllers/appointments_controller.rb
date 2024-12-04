@@ -20,8 +20,11 @@ class AppointmentsController < ApplicationController
                                         #    (appointment.checked_in_patient == false)
     end
 
-    @leaves_queue = @waiting_list.first
+    @waiting_list = @waiting_list.sort_by(&:created_at)
 
+    @leaves_queue = @waiting_list.select do |patient|
+      patient.id != @appointment.id
+    end.first
     # test start
 
     @time_per_patient = 20
@@ -37,7 +40,6 @@ class AppointmentsController < ApplicationController
 
     # test end
     authorize @appointment
-
   end
 
   def new
@@ -46,7 +48,6 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-
     @appointment = Appointment.new
     @hospital = Hospital.find(params[:hospital_id])
     @appointment.hospital = @hospital
@@ -60,8 +61,6 @@ class AppointmentsController < ApplicationController
     @id = @appointment.id
     authorize @appointment
     redirect_to appointment_path(@appointment)
-
-
   end
 
   def destroy
@@ -74,24 +73,16 @@ class AppointmentsController < ApplicationController
   end
 
   def delete_from_queue
-    @test = @leaves_queue
-    @test1 = @appointment
-
-    raise
     @appointments = @appointment.hospital.appointments
     @hospital = @appointment.hospital
     @waiting_list = []
-    @appointments.each do |appointment|
-      puts appointment
-      @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at && appointment.hospital == @appointment.hospital && appointment.checked_in_patient == false # <= @appointment.created_at) &&
-                                        #    (appointment.checked_in_patient == false)
-    end
 
-    @waiting_list.first.destroy
+    @leaves_queue = Appointment.find(params[:leaves_id])
+    @leaves_queue.destroy
+
     # @appointment.destroy
 
     redirect_to appointment_path(@appointment)
-
   end
 
   def map
@@ -104,7 +95,6 @@ class AppointmentsController < ApplicationController
   end
 
   def arrived
-
     @id = @appointment.id
     @patient = current_patient
     @qr_code = RQRCode::QRCode.new(@appointment.id.to_s)
