@@ -47,7 +47,7 @@
 
                   <% if @categories.any? %>
 
-                    <div class="specialities">
+                    <div class="specialities mt-1 mb-3">
 
                     <% @categories.each_with_index do |category, index| %>
                       <!-- Chaque bloc de catégories -->
@@ -63,7 +63,7 @@
                   <h2>Localisation</h2>
                   <div class='img d-flex justify-content-center '>
 
-                    <div style="width: 100%; height: 600px;"
+                    <div style="width: 100%; height: 600px;" class="mb-3 rounded-5"
                       data-controller="map"
                       data-map-marker-value="<%= @marker.to_json %>"
                       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
@@ -72,8 +72,8 @@
                 </div>
 
             <div class="d-flex justify-content-around">
-              <%= button_to "Retour", hospitals_path, method: :get, class: "btn-secondary", params: {category: params[:category]}%>
-              <%= button_to "Choisir", appointments_path, method: :post, class: "btn-third", params: { hospital_id: @hospital.id, category: params[:category]}%>
+              <%= button_to "Retour", hospitals_path, method: :get, class: "btn-primary-home-new ", params: {category: params[:category]}%>
+              <%= button_to "Choisir", appointments_path, method: :post, class: "btn-secondary-home-new", params: { hospital_id: @hospital.id, category: params[:category]}%>
             </div>
 
   </div>
