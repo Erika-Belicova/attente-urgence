@@ -35,7 +35,7 @@
 
   <!-- Lien vers l'hôpital du dernier rendez-vous -->
   <% if current_patient && current_patient.appointments.last && current_patient.appointments.last.hospital %>
-    <%= link_to hospital_path(current_patient.appointments.last.hospital) do %>
+    <%= link_to hospital_path(current_patient.appointments.last.hospital, latitude: current_patient.appointments.last.latitude, longitude: current_patient.appointments.last.longitude) do %>
       <i class="fa-solid fa-circle-info"></i>
       <p class="footer-paragraph">Info</p>
     <% end %>
@@ -48,7 +48,7 @@
 
   <!-- Lien vers le détail du dernier rendez-vous -->
   <% if current_patient && current_patient.appointments.last %>
-    <%= link_to appointment_path(current_patient.appointments.last) do %>
+    <%= link_to appointment_path(current_patient.appointments.last, latitude: current_patient.appointments.last.latitude, longitude: current_patient.appointments.last.longitude) do %>
       <i class="fa-solid fa-list"></i>
       <p class="footer-paragraph">RDV</p>
     <% end %>
