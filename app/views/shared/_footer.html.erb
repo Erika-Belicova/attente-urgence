@@ -28,7 +28,7 @@
   </a>
 
   <!-- Lien vers la liste des hôpitaux avec latitude et longitude -->
-  <%= link_to hospitals_path(latitude: params[:latitude], longitude: params[:longitude]) do %>
+  <%= link_to hospitals_path(latitude: current_patient.appointments.last.latitude, longitude: current_patient.appointments.last.longitude) do %>
     <i class="fa-solid fa-hospital"></i>
     <p class="footer-paragraph">Hopitaux</p>
   <% end %>
