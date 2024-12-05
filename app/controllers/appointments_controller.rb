@@ -29,7 +29,7 @@ class AppointmentsController < ApplicationController
     # test start
 
     @time_per_patient = 20
-    @waiting_time = @waiting_list.length * @time_per_patient
+    @waiting_time = (@waiting_list.length - 1) * @time_per_patient
     @start_time = Time.now.utc
     @end_time = @start_time + @waiting_time.minutes
 

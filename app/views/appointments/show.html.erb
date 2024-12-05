@@ -15,10 +15,18 @@
     <div class="card-category-hospital my-2">
       <div id="icons" class="d-flex flex-column align-items-center justify-content-center">
         <div>
-              <div class="d-flex justify-content-around">
+              <%# <div class="d-flex justify-content-around">
                 <% count = @waiting_list.length %>
-                <h2 class="icon-appointment">
+                <%# <h2 class="icon-appointment">
                   <i id="clock" class="fa-solid fa-user-clock">&nbsp;&nbsp;&nbsp;<%= count - 1 %></i>
+                <%# </h2>
+              </div> %>
+
+              <div id="waiting-count" class="d-flex justify-content-around" data-count="<%= @waiting_list.length - 1 %>">
+                <h2 class="icon-appointment">
+                <i id="clock" class="fa-solid fa-user-clock">&nbsp;&nbsp;&nbsp;<span id="count-number">
+                  <%= @waiting_list.length - 1 %></span>
+                </i>
                 </h2>
               </div>
 
@@ -51,29 +59,29 @@
 
               </div>
             <% end%>
+
+
           </div>
         </div>
       </div>
     </div>
-<%#
-    <%= button_to "Remove from Queue",
-              delete_from_queue_appointment_path(appointment_id: @appointment.id, leaves_id: @leaves_queue.id),
-              method: :delete,
-              remote: true,
-              class: "btn btn-danger" %>
-<%#
-                <%= button_to "Remove from Queue",
-                delete_from_queue_appointment_path(appointment_id: @appointment.id, leaves_id: @leaves_queue.id),
-                method: :delete,
-                class: "btn btn-danger" %>
 
 
-                   <%= button_to "Remove from Queue",
-              delete_from_queue_appointment_path(appointment_id: @appointment.id, leaves_id: @leaves_queue.id),
-              method: :delete,
-              class: "btn btn-danger",
-              data: { leaves_id: @leaves_queue.id } %>
 
+  <div data-controller="countdown"
+                data-countdown-from-value="<%= @start_time_iso %>"
+                data-countdown-to-value="<%= @end_time_iso %>"
+                >
+
+        <%= turbo_stream_from "queue_#{@appointment.id}" %>
+
+      <%= button_to "Remove from Queue",
+        delete_from_queue_appointment_path(appointment_id: @appointment.id, leaves_id: @leaves_queue.id),
+        method: :delete,
+        class: "btn btn-danger",
+        data: { countdown_target: "deleteButton",
+              countdown_appointment_id_value: @appointment.id},
+        remote: true %>
 
     <div class="card-category-hospital no-padding mt-2">
       <div class="d-flex flex-column align-items-center justify-content-center">
@@ -84,9 +92,7 @@
         <div id="time-value" class="d-flex flex-column align-items-center justify-content-center">
           <!-- Countdown Area -->
           <div id="test">
-            <div data-controller="countdown"
-                data-countdown-from-value="<%= @start_time_iso %>"
-                data-countdown-to-value="<%= @end_time_iso %>">
+
 
               <div data-countdown-target="during" data-countdown-action="click->countdown#" class="countdown-card" style="position: relative; display: block; color: black;">
                 <!-- Displaying the remaining time -->

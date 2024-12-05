@@ -10,10 +10,17 @@ export default class extends Controller {
     to: String,
   };
 
-  static targets = ['during', 'remainingTime', 'fastForwardToggle', 'modalButton'];  // Added fastForwardToggle target
+  static targets = ['deleteButton', 'during', 'remainingTime', 'fastForwardToggle', 'modalButton'];  // Added fastForwardToggle target
 
   connect() {
     console.log("connected");
+
+    // Log the delete button target
+    if (this.deleteButtonTarget) {
+      console.log("deleteButtonTarget found:", this.deleteButtonTarget);
+    } else {
+      console.log("deleteButtonTarget NOT found.");
+    }
 
     // Start the normal countdown interval
     this.timer = setInterval(() => {
@@ -47,14 +54,23 @@ export default class extends Controller {
   }
 
   startFastForward() {
+    console.log("1")
     if (this.isFastForwarding) {
+      console.log("2")
       clearInterval(this.fastForwardTimer);  // Clear any existing fast-forward timers
 
       this.fastForwardTimer = setInterval(() => {
+        console.log("3")
         const { to } = this.getTimeData();
         if (!to) return;  // If to is invalid, exit
 
         const remainingTimeInSeconds = Math.floor((to - new Date()) / 1000);
+
+        // Log the time every 20 minutes during the countdown
+        if (remainingTimeInSeconds % (20 * 60) === 0) {
+          console.log("20min reached");
+          this.deleteFromQueue();  // Trigger delete from queue
+        }
 
         // Stop fast forward if the countdown reaches or exceeds 40 minutes
         if (remainingTimeInSeconds <= 40 * 60) {
@@ -66,7 +82,9 @@ export default class extends Controller {
         }
 
         // Subtract 16 minutes from the target time in fast-forward mode
-        this.toValue = new Date(to.getTime() - 16 * 60 * 1000).toISOString(); // Jump 16 minutes forward
+        this.toValue = new Date(to.getTime() - 19 * 60 * 1000).toISOString(); // Jump 16 minutes forward
+        this.deleteFromQueue();
+        console.log("QUEUE DELETE")
         this.update();  // Reflect changes in the countdown
       }, 200);  // Updates every 200ms for smooth fast-forwarding
     }
@@ -101,35 +119,58 @@ export default class extends Controller {
       .padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
   }
 
-  deleteFromQueue() {
-    console.log("20min")
-    // logic - call controller method to update waiting list
-    // open appointments all - index
-    // appointments all.first - delete -> not showing anything redirect back
-    // update the order loop
-    // every update, update page without refresh
-    console.log("deleteFromQueue triggered");
-
-    // logic to handle the queue update
-    // You may perform your Ajax or other updates here
-
-    // Now, only trigger the button click under controlled conditions
-    this.triggerButtonClick();
+  triggerDeleteButtonClick() {
+    if (this.deleteButtonTarget) {
+      console.log("Triggering delete button click");
+      console.log("Countdown finished. Triggering queue method.");
+      this.deleteButtonTarget.click();  // Programmatically trigger the button click
+    } else {
+      console.log("Delete button target not found");
+    }
   }
 
-    // Method that actually triggers the button click for the remove from queue button
-    triggerButtonClick() {
-      // Dynamically construct the selector using the leavesQueueId
-      const button = document.querySelector(`[data-leaves-id='${this.leavesQueueId}']`);
+  // deleteFromQueue() {
+  //   console.log("deleteFromQueue triggered");
+  //   // logic - call controller method to update waiting list
+  //   // open appointments all - index
+  //   // appointments all.first - delete -> not showing anything redirect back
+  //   // update the order loop
+  //   // every update, update page without refresh
 
-      if (button) {
-        console.log("Clicking the action button");
-        button.click();  // Trigger the button click using JavaScript
-      } else {
-        console.log("Button not found");
-      }
+  //   console.log("deleteFromQueue triggered");
+
+  //   // logic to handle the queue update
+  //   // You may perform your Ajax or other updates here
+
+  //   // Now, only trigger the button click under controlled conditions
+  //   this.deleteButtonTarget.click();
+  // }
+
+  deleteFromQueue() {
+    console.log("deleteFromQueue triggered");
+
+    // Find the count container
+    const countElement = document.getElementById("waiting-count");
+
+    // Get the current count from the data attribute
+    let currentCount = parseInt(countElement.dataset.count, 10);
+
+    if (currentCount > 0) {
+      // Decrement the count
+      currentCount--;
+
+      // Update the data attribute
+      countElement.dataset.count = currentCount;
+
+      // Update the displayed number
+      const countNumber = document.getElementById("count-number");
+      countNumber.textContent = currentCount;
+
+      console.log(`Count updated to: ${currentCount}`);
+    } else {
+      console.log("No more patients in the queue.");
     }
-
+  }
 
   update() {
     const timeData = this.getTimeData();
@@ -153,6 +194,12 @@ export default class extends Controller {
         remainingTimeInSeconds
       );
 
+      // Log the time every 20 minutes during the countdown
+      // if (remainingTimeInSeconds % (20 * 60) === 0) {
+      //   console.log("20min reached");
+      //   this.deleteFromQueue();  // Trigger delete from queue
+      // }
+
       // Trigger the modal button when countdown reaches zero
       if (remainingTimeInSeconds <= 40 * 60) {
         console.log("Countdown finished. Triggering modal button.");
@@ -162,12 +209,6 @@ export default class extends Controller {
         clearInterval(this.timer);
 
         return;
-      }
-
-      if (remainingTimeInSeconds % (20 * 60) === 0) {
-        // add action that will be called every 20 minutes
-        console.log("20min")
-        this.deleteFromQueue();
       }
     }
   }
