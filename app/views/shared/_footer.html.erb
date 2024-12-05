@@ -1,20 +1,61 @@
-<div class="footer" data-controller="footer" data-footer-target="footer">
-  <div class="footer-links">
+<!--<div class="footer footer-links" data-controller="footer" data-footer-target="footer">
     <a href="/">
       <i class="fa-solid fa-house"></i>
       <p class="footer-paragraph">Accueil</p>
     </a>
-    <a href="/hospitals">
-      <i class="fa-solid fa-circle-info"></i>
+    <%#= link_to hospitals_path(latitude: params[:latitude], longitude: params[:longitude]) do %>-->
+<!--      <i class="fa-solid fa-hospital"></i>
       <p class="footer-paragraph">Hopitaux</p>
-    </a>
-    <a href="/hospitals">
-      <i class="fa-solid fa-hospital"></i>
-      <p class="footer-paragraph">Hopital</p>
+    <%# end %>-->
+<!--    <a href="/hospitals">
+      <i class="fa-solid fa-circle-info"></i>
+      <p class="footer-paragraph">Info</p>
     </a>
     <a href="#">
       <i class="fa-solid fa-list"></i>
       <p class="footer-paragraph">RDV</p>
     </a>
   </div>
+</div>
+-->
+
+
+<div class="footer footer-links" data-controller="footer" data-footer-target="footer">
+  <!-- Lien vers l'accueil -->
+  <a href="/">
+    <i class="fa-solid fa-house"></i>
+    <p class="footer-paragraph">Accueil</p>
+  </a>
+
+  <!-- Lien vers la liste des hôpitaux avec latitude et longitude -->
+  <%= link_to hospitals_path(latitude: params[:latitude], longitude: params[:longitude]) do %>
+    <i class="fa-solid fa-hospital"></i>
+    <p class="footer-paragraph">Hopitaux</p>
+  <% end %>
+
+  <!-- Lien vers l'hôpital du dernier rendez-vous -->
+  <% if current_patient && current_patient.appointments.last && current_patient.appointments.last.hospital %>
+    <%= link_to hospital_path(current_patient.appointments.last.hospital, latitude: current_patient.appointments.last.latitude, longitude: current_patient.appointments.last.longitude) do %>
+      <i class="fa-solid fa-circle-info"></i>
+      <p class="footer-paragraph">Info</p>
+    <% end %>
+  <% else %>
+    <a href="#">
+      <i class="fa-solid fa-circle-info"></i>
+      <p class="footer-paragraph">Info</p>
+    </a>
+  <% end %>
+
+  <!-- Lien vers le détail du dernier rendez-vous -->
+  <% if current_patient && current_patient.appointments.last %>
+    <%= link_to appointment_path(current_patient.appointments.last, latitude: current_patient.appointments.last.latitude, longitude: current_patient.appointments.last.longitude) do %>
+      <i class="fa-solid fa-list"></i>
+      <p class="footer-paragraph">RDV</p>
+    <% end %>
+  <% else %>
+    <a href="#">
+      <i class="fa-solid fa-list"></i>
+      <p class="footer-paragraph">RDV</p>
+    </a>
+  <% end %>
 </div>

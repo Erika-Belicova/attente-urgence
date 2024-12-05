@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: [:destroy, :map, :arrived]
+  before_action :set_appointment, only: [:show, :destroy, :map, :arrived]
 
   def index
     @appointments = Appointment.all
@@ -11,31 +11,46 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @appointment = Appointment.find(params[:id])
-    @appointments = Appointment.all
+    @appointments_hospital = @appointment.hospital.appointments
     @hospital = @appointment.hospital
+
     @waiting_list = []
-    @appointments.each do |appointment|
-      @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at &&
-                                                                    @appointment.checked_in_patient == false
+    @appointments_hospital.each do |appointment|
+      puts appointment
+      @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at && appointment.hospital.id == @appointment.hospital.id && appointment.checked_in_patient == false
     end
 
+    # @duration = hospital.distance_to([@latitude, @longitude]).round * 5
+    @waiting_list = @waiting_list.sort_by(&:created_at)
+
+    @leaves_queue = @waiting_list.select do |patient|
+      patient.id != @appointment.id
+    end.first
     # test start
 
     @time_per_patient = 20
     @waiting_time = @waiting_list.length * @time_per_patient
-
     @start_time = Time.now.utc
-
     @end_time = @start_time + @waiting_time.minutes
 
     # Convert both times to ISO8601 format (compatible with JavaScript's Date object)
     @start_time_iso = @start_time.iso8601
     @end_time_iso = @end_time.iso8601
 
+
+
+    #adding geolocation
+
+    # @marker = {
+    #   lat: @appointment.latitude,
+    #   lng: @appointment.longitude,
+    #   # info_window_html: render_to_string(partial: "info_window", locals: {hospital: @hospital})
+    # }
+    # @latitude = params[:latitude].to_f
+    # @longitude = params[:longitude].to_f
+
     # test end
     authorize @appointment
-
   end
 
   def new
@@ -44,29 +59,37 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-
     @appointment = Appointment.new
     @hospital = Hospital.find(params[:hospital_id])
     @appointment.hospital = @hospital
     @appointment.category = Category.find_by(name: params[:category]) || @hospital.categories.first
     @appointment.patient = current_patient
-    @appointment.latitude = @hospital.latitude
-    @appointment.longitude = @hospital.longitude
+    @appointment.latitude = params[:latitude]
+    @appointment.longitude = params[:longitude]
     @appointment.checked_in_patient = false
     @appointment.save!
 
     @id = @appointment.id
     authorize @appointment
     redirect_to appointment_path(@appointment)
-
-
   end
 
   def destroy
+    @appointment = Appointment.find(params[:id])
+    @appointment.checked_in_patient = true
     authorize @appointment
     @appointment.destroy
 
     redirect_to root_path, status: :see_other
+  end
+
+  def delete_from_queue
+    @leaves_queue = Appointment.find(params[:leaves_id])
+    @leaves_queue.destroy
+
+    @appointment = Appointment.find(params[:appointment_id])
+
+    redirect_to appointment_path(@appointment)
   end
 
   def map
@@ -79,7 +102,6 @@ class AppointmentsController < ApplicationController
   end
 
   def arrived
-
     @id = @appointment.id
     @patient = current_patient
     @qr_code = RQRCode::QRCode.new(@appointment.id.to_s)
@@ -95,6 +117,13 @@ class AppointmentsController < ApplicationController
   private
 
   def set_appointment
-    @appointment = Appointment.find_by(@id)
+    # @appointment = Appointment.find_by(@id)
+    @appointment = if params[:id]
+                      Appointment.find(params[:id])
+                    elsif params[:appointment_id]
+                      Appointment.find(params[:appointment_id])
+                    else
+                      raise ActiveRecord::RecordNotFound, "Appointment ID not provided"
+                   end
   end
 end
