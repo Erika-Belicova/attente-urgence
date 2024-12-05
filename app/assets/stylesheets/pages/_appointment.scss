@@ -155,12 +155,13 @@ p.entry {
   display: none;
 }
 
-.invisible-btn {
-  opacity: 0;              /* Makes the button fully invisible */
-  pointer-events: all;     /* Ensures that the button is still clickable */
-  width: 100%;             /* Makes the button fill the width of its container */
-  height: 100%;            /* Makes the button fill the height of its container */
+.btn-invisible {
   background: transparent; /* Make the background transparent */
-  border: none;            /* Remove border */
-  position: absolute;      /* If you want to avoid affecting the layout */
+  border: none; /* Remove any borders */
+  color: transparent; /* Make the text (if any) transparent */
+  width: 200px; /* Ensure it takes up the full width of its parent */
+  height: 15px; /* Ensure it takes up the full height of its parent */
+  display: block; /* Make it a block-level element to occupy its parent container */
+  opacity: 0; /* Make it fully transparent */
+  pointer-events: auto; /* Ensure the button remains clickable */
 }
