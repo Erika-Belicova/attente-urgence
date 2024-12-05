@@ -84,8 +84,10 @@ class AppointmentsController < ApplicationController
   end
 
   def delete_from_queue
-    @leaves_queue = Appointment.find(params[:leaves_id])
-    @leaves_queue.destroy
+    if params[:leaves_id].present?
+      @leaves_queue = Appointment.find(params[:leaves_id])
+      @leaves_queue.destroy
+    end
 
     # Recalculate the waiting list for the JavaScript update
     @appointment = Appointment.find(params[:appointment_id])

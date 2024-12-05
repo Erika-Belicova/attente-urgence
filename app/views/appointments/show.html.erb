@@ -71,7 +71,7 @@
 
     <!-- <div>
       <%= button_to "Remove from Queue",
-        delete_from_queue_appointment_path(appointment_id: @appointment.id, leaves_id: @leaves_queue.id),
+        delete_from_queue_appointment_path(appointment_id: @appointment.id, leaves_id: @leaves_queue&.id),
         method: :delete,
         class: "btn btn-danger",
         data: { countdown_target: "deleteButton",
@@ -85,7 +85,7 @@
         <div class="d-flex flex-column align-items-center justify-content-center">
 
           <%= button_to "",
-            delete_from_queue_appointment_path(appointment_id: @appointment.id, leaves_id: @leaves_queue.id),
+            delete_from_queue_appointment_path(appointment_id: @appointment.id, leaves_id: @leaves_queue&.id),
             method: :delete,
             class: "btn btn-invisible",
             data: { countdown_target: "deleteButton",
@@ -103,7 +103,7 @@
           <div data-countdown-target="during" data-countdown-action="click->countdown#" class="countdown-card" style="position: relative; display: block; color: black;">
             <!-- Displaying the remaining time -->
             <h3 class="time">
-              <time data-countdown-target="remainingTime"></time>
+              <time data-countdown-target="remainingTime"><span class="ellipsis">...</span></time>
             </h3>
 
               <!-- Fast Forward Toggle Button (Real button) -->
@@ -137,6 +137,13 @@
 
             <div class= "cards-hospital">
               <div class= "card-category-alert " >
+                <%= button_to "",
+                  delete_from_queue_appointment_path(appointment_id: @appointment.id, leaves_id: @leaves_queue&.id),
+                  method: :delete,
+                  class: "btn btn-invisible",
+                  data: { countdown_target: "deleteButton",
+                        countdown_appointment_id_value: @appointment.id},
+                  remote: true %>
                 <p><i class="fa-solid fa-bell icon-big"></i></p>
                 <h1 class="h1-modal">Vous pouvez prendre la route !</h1>
               </div>
@@ -144,7 +151,14 @@
 
             <div class= "cards-hospital">
               <div class= "card-category-alert" >
-                <h2 class="h2-modal d-flex align-items-start"><i class="fa-solid fa-hospital small-icon"></i> Il reste 2 personnes avant vous</h2>
+                <% if @leaves_queue&.id.nil? %>
+                  <% @persons = "0 personnes" %>
+                <% elsif @waiting_list.length == 2 %>
+                  <% @persons = "1 personne" %>
+                <% else %>
+                  <% @persons = "2 personnes" %>
+                <% end %>
+                <h2 class="h2-modal d-flex align-items-start"><i class="fa-solid fa-hospital small-icon"></i> Il reste <%= @persons %> avant vous</h2>
               </div>
             </div>
 
