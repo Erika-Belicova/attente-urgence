@@ -29,7 +29,7 @@ class AppointmentsController < ApplicationController
     # test start
 
     @time_per_patient = 20
-    @waiting_time = @waiting_list.length * @time_per_patient
+    @waiting_time = (@waiting_list.length - 1) * @time_per_patient
     @start_time = Time.now.utc
     @end_time = @start_time + @waiting_time.minutes
 
@@ -87,7 +87,19 @@ class AppointmentsController < ApplicationController
     @leaves_queue = Appointment.find(params[:leaves_id])
     @leaves_queue.destroy
 
+    # Recalculate the waiting list for the JavaScript update
     @appointment = Appointment.find(params[:appointment_id])
+    @appointments_hospital = @appointment.hospital.appointments
+
+    # Rebuild the waiting list logic (same as in `show`)
+    @waiting_list = @appointments_hospital.select do |appointment|
+      appointment.created_at <= @appointment.created_at &&
+        appointment.hospital.id == @appointment.hospital.id &&
+        !appointment.checked_in_patient
+    end.sort_by(&:created_at)
+
+    # Remove the appointment if it's not the primary one
+    @leaves_queue = @waiting_list.reject { |patient| patient.id == @appointment.id }.first
 
     redirect_to appointment_path(@appointment)
   end
