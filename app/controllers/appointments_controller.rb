@@ -37,6 +37,18 @@ class AppointmentsController < ApplicationController
     @start_time_iso = @start_time.iso8601
     @end_time_iso = @end_time.iso8601
 
+
+
+    #adding geolocation
+
+    # @marker = {
+    #   lat: @appointment.latitude,
+    #   lng: @appointment.longitude,
+    #   # info_window_html: render_to_string(partial: "info_window", locals: {hospital: @hospital})
+    # }
+    # @latitude = params[:latitude].to_f
+    # @longitude = params[:longitude].to_f
+
     # test end
     authorize @appointment
   end
@@ -52,8 +64,8 @@ class AppointmentsController < ApplicationController
     @appointment.hospital = @hospital
     @appointment.category = Category.find_by(name: params[:category]) || @hospital.categories.first
     @appointment.patient = current_patient
-    @appointment.latitude = @hospital.latitude
-    @appointment.longitude = @hospital.longitude
+    @appointment.latitude = params[:latitude]
+    @appointment.longitude = params[:longitude]
     @appointment.checked_in_patient = false
     @appointment.save!
 
