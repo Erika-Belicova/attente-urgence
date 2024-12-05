@@ -96,7 +96,7 @@ larrey.photo.attach(io: StringIO.new(larrey_photo), filename: 'larrey.jpeg', con
 larrey.save!
 
 sud = Hospital.new(
-  name: "Clinique La Coix du Sud",
+  name: "Clinique La Croix du Sud",
   address: "52 Chem. de Ribaute, 31130 Quint-Fonsegrives",
   doctor_nb: 15,
   latitude: "43.58409277782023",
