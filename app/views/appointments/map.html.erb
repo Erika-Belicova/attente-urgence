@@ -5,9 +5,9 @@
         <div class="d-flex justify-content-center">
           <h2>En route vers <br><%= @appointment.hospital.name %>, <br><%= @appointment.hospital.address %></h2>
         </div>
-          <div class= "img-map">
+          <div class= "img-map pb-2">
                   <%#= image_tag 'Hospital-pix/itinirary.jpg', alt: 'Itinirary', class: "img" %>
-            <div class="rounded-5" style="width: 100%; height: 550px; border-radius: 16px;"
+            <div class="rounded-5" style="width: 100%; height: 450px; border-radius: 16px;"
                               data-controller="itinerary"
                               data-itinerary-marker-value="<%= @marker.to_json %>"
                               data-itinerary-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">

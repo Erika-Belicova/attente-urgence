@@ -508,3 +508,11 @@ p {
   border: 0px;
   // padding-left: 8px
 }
+
+body {
+  background: linear-gradient(-45deg, transparent, #c2dbe8ef);
+}
+
+body.pages {
+  background: none;
+}
