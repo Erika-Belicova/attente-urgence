@@ -1,35 +1,28 @@
 
-<div class= "map-container">
-  <div class="d-flex justify-content-center mt-3">
-    <p>En route vers <%= @appointment.hospital.name %>, <%= @appointment.hospital.address %></p>
-  </div>
-    <div class= "card-category-alert img">
-            <%#= image_tag 'Hospital-pix/itinirary.jpg', alt: 'Itinirary', class: "img" %>
-      <div class="rounded-3" style="width: 100%; height: 350px; border-radius: 16px;"
-                        data-controller="itinerary"
-                        data-itinerary-marker-value="<%= @marker.to_json %>"
-                        data-itinerary-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-      </div>
-    </div>
-</div>
-
-<!--<div class= "d-flex justify-content-center">
-    <div class= "btn-container ">
+<div class="card-hospital">
+    <div class= "card-category-hospital " style="margin-left:10%; margin-right:10%; height:80%">
+      <%# <div class= "map-container"> %>
         <div class="d-flex justify-content-center">
-            <%#= link_to @hospital, "#", class: "btn-third-big img h4" %>-->
-<!--          </div>
-      </div>
-</div>-->
+          <h2>En route vers <br><%= @appointment.hospital.name %>, <br><%= @appointment.hospital.address %></h2>
+        </div>
+          <div class= "img-map">
+                  <%#= image_tag 'Hospital-pix/itinirary.jpg', alt: 'Itinirary', class: "img" %>
+            <div class="rounded-5" style="width: 100%; height: 550px; border-radius: 16px;"
+                              data-controller="itinerary"
+                              data-itinerary-marker-value="<%= @marker.to_json %>"
+                              data-itinerary-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+            </div>
+          </div>
 
-<!--<div class= "d-flex justify-content-center">
-  <div class= "btn-container">
-    <div class="d-flex justify-content-center">
-      <%#= @hospital.name, class: "btn-third-big img h4" %>-->
-<!--    </div>
-  </div>
+      <%# </div> %>
+     </div>
 </div>
--->
-<div class="d-flex justify-content-center">
-  <%= button_to "Arrivé", appointment_arrived_path(@appointment), method: :get, class: "btn-secondary" %>
+
+
+<div class="card-hospital">
+    <div class="card-category-hostpital"style="margin-left:10%; margin-right:10%">
+
+        <%= button_to "Arrivé", appointment_arrived_path(@appointment), method: :get, class: "btn-forth h4" %>
+          <div class="footer-space"></div>
+   </div>
 </div>
-<div class="footer-space"></div>
