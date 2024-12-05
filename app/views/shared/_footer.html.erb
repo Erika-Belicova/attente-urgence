@@ -1,15 +1,15 @@
-<div class="footer" data-controller="footer" data-footer-target="footer">
+<div class="footer footer-links" data-controller="footer" data-footer-target="footer">
     <a href="/">
       <i class="fa-solid fa-house"></i>
       <p class="footer-paragraph">Accueil</p>
     </a>
     <%= link_to hospitals_path(latitude: params[:latitude], longitude: params[:longitude]) do %>
-      <i class="fa-solid fa-house"></i>
+      <i class="fa-solid fa-hospital"></i>
       <p class="footer-paragraph">Hopitaux</p>
     <% end %>
     <a href="/hospitals">
-      <i class="fa-solid fa-hospital"></i>
-      <p class="footer-paragraph">Hopital</p>
+      <i class="fa-solid fa-circle-info"></i>
+      <p class="footer-paragraph">Info</p>
     </a>
     <a href="#">
       <i class="fa-solid fa-list"></i>
