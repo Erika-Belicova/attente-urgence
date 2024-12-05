@@ -17,12 +17,24 @@
       <div class="d-flex flex-column card-width">
         <p class="icon-size address-card"> <%= @hospital.address %> </p>
       </div>
-
-      <div class="d-flex justify-content-around flex-column text-end flex-grow-1">
+                <div class="d-flex justify-content-around flex-column text-end flex-grow-1">
         <div class="d-flex justify-content-start gap-3 icons-new">
-          <div class="flex-column"><p class="icon-size">&nbsp;<i class="fa-solid fa-person-walking"></i></p></div>
-          <div class="flex-column"><p class="icon-size"> <%= @hospital.distance_to([@latitude, @longitude]).round %> km </p></div>
-        </div>
+                  <!--texte-->
+                  <p><i class="fa-solid fa-person-walking"></i> <%= @hospital.distance_to([@latitude, @longitude]).round %> km</p>
+                    <% @waiting_minutes = @hospital.appointments.length * @time_per_patient %>
+                    <% @hours = @waiting_minutes / 60 %>
+                    <% @minutes = @waiting_minutes % 60 %>
+                  <p><i class="fa-solid fa-solid fa-clock"></i>
+                    <% if @minutes == 0 %>
+                      <%= "#{@hours} h" %>
+                    <% elsif @hours == 0 %>
+                      <%= "#{@minutes} min" %>
+                    <% else %>
+                      <%= "#{@hours} h #{@minutes} min" %>
+                    <% end %>
+                  </p>
+                  <p><i class="fa-solid fa-solid fa-map"></i> <%= @hospital.distance_to([@latitude, @longitude]).round * 5 %> min</p>
+                </div>
 
         <div class="d-flex justify-content-start gap-3 icons-new">
           <div class="flex-column"><p class="icon-size"><i class="fa-solid fa-solid fa-clock"></i></p></div>
@@ -72,8 +84,8 @@
                 </div>
 
             <div class="d-flex justify-content-around">
-              <%= button_to "Retour", hospitals_path, method: :get, class: "btn-secondary", params: {category: params[:category]}%>
-              <%= button_to "Choisir", appointments_path, method: :post, class: "btn-third", params: { hospital_id: @hospital.id, category: params[:category]}%>
+              <%= button_to "Retour", hospitals_path, method: :get, class: "btn-secondary", params: { hospital_id: @hospital.id, category: params[:category], latitude: @latitude, longitude: @longitude}%>
+              <%= button_to "Choisir", appointments_path, method: :post, class: "btn-third", params: { hospital_id: @hospital.id, category: params[:category], latitude: @latitude, longitude: @longitude}%>
             </div>
 
   </div>

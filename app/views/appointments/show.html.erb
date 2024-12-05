@@ -42,7 +42,7 @@
                   <% else %>
                     <div class="d-flex justify-content-around float-container">
                       <p class="entry float-child-1"><i id="patient" class="fa-solid fa-circle-user"></i><%= " Patient no. #{waiting.id} " %></p>
-                      <p class="entry float-child-2">&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;Order:<%= " #{index + 1} " %></p>
+                      <p class="entry float-child-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Order:<%= " #{index + 1} " %></p>
                     </div>
                   <% end %>
 
@@ -53,10 +53,12 @@
       </div>
     </div>
 
+    <%= link_to "Delete", appointment_delete_from_queue_path(@appointment, leaves_id: @leaves_queue.id), remote: true, method: :get %>
+
     <div class="card-category-hospital no-padding mt-2">
       <div class="d-flex flex-column align-items-center justify-content-center">
         <div id="time-header" class="d-flex flex-column align-items-center justify-content-center">
-          <h3 class="time-appointment">temps estimé</h3>
+          <h3 class="time-appointment">Temps estimé</h3>
         </div>
 
         <div id="time-value" class="d-flex flex-column align-items-center justify-content-center">
@@ -117,8 +119,8 @@
             <div class= "cards-hospital">
               <div class= "card-category-alert" >
                 <!-- récuperer la bonne valeur -->
-                <% @duration = 30 %>
-                <h2 class="h2-modal d-flex align-items-start"><i class="fa-solid fa-map-location-dot small-icon"></i> Vous avez <%= @duration %> minutes de route</h2>
+                <%# @duration = 30 %>
+                <h2 class="h2-modal d-flex align-items-start"><i class="fa-solid fa-map-location-dot small-icon"></i> Vous avez <%= @hospital.distance_to([@appointment.latitude, @appointment.longitude]).round * 5 %> minutes de route</h2>
               </div>
             </div>
 
@@ -138,7 +140,11 @@
             <div class= "cards-hospital ">
               <div class= "card-category-alert">
                 <div class="d-flex justify-content-around">
-                  <%= button_to "Prenez la route !", appointment_map_path(@appointment), method: :get, class: "btn-primary-home" %>
+
+                  <!-- <%= link_to "Prenez la route !", appointment_map_path(@appointment.id), method: :get, class: "btn-primary-home" %> -->
+
+                  <%= button_to "Prenez la route !", appointment_map_path(@appointment), method: :get, class: "btn-primary-home", params: { appointment_id: @appointment.id}%>
+
                 </div>
               </div>
             </div>
