@@ -42,7 +42,7 @@
                   <% else %>
                     <div class="d-flex justify-content-around float-container">
                       <p class="entry float-child-1"><i id="patient" class="fa-solid fa-circle-user"></i><%= " Patient no. #{waiting.id} " %></p>
-                      <p class="entry float-child-2">&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;Order:<%= " #{index + 1} " %></p>
+                      <p class="entry float-child-2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Order:<%= " #{index + 1} " %></p>
                     </div>
                   <% end %>
 
@@ -52,6 +52,8 @@
         </div>
       </div>
     </div>
+
+    <%= link_to "Delete", appointment_delete_from_queue_path(@appointment, leaves_id: @leaves_queue.id), remote: true, method: :get %>
 
     <div class="card-category-hospital no-padding mt-2">
       <div class="d-flex flex-column align-items-center justify-content-center">
@@ -138,7 +140,11 @@
             <div class= "cards-hospital ">
               <div class= "card-category-alert">
                 <div class="d-flex justify-content-around">
+
+                  <!-- <%= link_to "Prenez la route !", appointment_map_path(@appointment.id), method: :get, class: "btn-primary-home" %> -->
+
                   <%= button_to "Prenez la route !", appointment_map_path(@appointment), method: :get, class: "btn-primary-home", params: { appointment_id: @appointment.id}%>
+
                 </div>
               </div>
             </div>

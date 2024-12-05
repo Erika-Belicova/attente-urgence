@@ -10,12 +10,16 @@ class HospitalsController < ApplicationController
     @longitude = params[:longitude].to_f
 
     authorize @hospitals
-
+    @time_per_patient = 20
   end
-
 
   def show
     @hospital = Hospital.find(params[:id])
+    @time_per_patient = 20
+    @appointments = Appointment.all
+    @hospital.appointments = @appointments.select do |appointment|
+                                                    appointment.hospital.id == @hospital.id
+                                                  end
     authorize @hospital
     @categories = @hospital.categories
 
@@ -27,7 +31,6 @@ class HospitalsController < ApplicationController
 
       @latitude = params[:latitude].to_f
       @longitude = params[:longitude].to_f
-
   end
 
   def new
