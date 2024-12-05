@@ -22,7 +22,9 @@ Rails.application.routes.draw do
   resources :appointments, only: [:index, :new, :create, :show, :destroy] do
     get "map", to: "appointments#map", as: "map"
     get "arrived", to: "appointments#arrived", as: "arrived"
-    get "delete_from_queue", to: "appointments#delete_from_queue", as: "delete_from_queue"
+    member do
+      delete :delete_from_queue
+    end
   end
   resources :hospitals, only: [:index, :show, :new, :create]
 end

@@ -31,6 +31,9 @@
       <div class="d-flex flex-column align-items-center justify-content-center">
         <div id="waiting-list-card">
           <div id="waiting-list-inner">
+            <div id="waiting-list-container">
+            </div>
+
             <% @waiting_list.each_with_index do |waiting, index| %>
               <div id="line" class="d-flex justify-content-around">
 
@@ -52,8 +55,25 @@
         </div>
       </div>
     </div>
+<%#
+    <%= button_to "Remove from Queue",
+              delete_from_queue_appointment_path(appointment_id: @appointment.id, leaves_id: @leaves_queue.id),
+              method: :delete,
+              remote: true,
+              class: "btn btn-danger" %>
+<%#
+                <%= button_to "Remove from Queue",
+                delete_from_queue_appointment_path(appointment_id: @appointment.id, leaves_id: @leaves_queue.id),
+                method: :delete,
+                class: "btn btn-danger" %>
 
-    <%= link_to "Delete", appointment_delete_from_queue_path(@appointment, leaves_id: @leaves_queue.id), remote: true, method: :get %>
+
+                   <%= button_to "Remove from Queue",
+              delete_from_queue_appointment_path(appointment_id: @appointment.id, leaves_id: @leaves_queue.id),
+              method: :delete,
+              class: "btn btn-danger",
+              data: { leaves_id: @leaves_queue.id } %>
+
 
     <div class="card-category-hospital no-padding mt-2">
       <div class="d-flex flex-column align-items-center justify-content-center">

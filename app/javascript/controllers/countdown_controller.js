@@ -108,7 +108,28 @@ export default class extends Controller {
     // appointments all.first - delete -> not showing anything redirect back
     // update the order loop
     // every update, update page without refresh
+    console.log("deleteFromQueue triggered");
+
+    // logic to handle the queue update
+    // You may perform your Ajax or other updates here
+
+    // Now, only trigger the button click under controlled conditions
+    this.triggerButtonClick();
   }
+
+    // Method that actually triggers the button click for the remove from queue button
+    triggerButtonClick() {
+      // Dynamically construct the selector using the leavesQueueId
+      const button = document.querySelector(`[data-leaves-id='${this.leavesQueueId}']`);
+
+      if (button) {
+        console.log("Clicking the action button");
+        button.click();  // Trigger the button click using JavaScript
+      } else {
+        console.log("Button not found");
+      }
+    }
+
 
   update() {
     const timeData = this.getTimeData();
