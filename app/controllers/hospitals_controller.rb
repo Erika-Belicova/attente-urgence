@@ -6,8 +6,8 @@ class HospitalsController < ApplicationController
       @hospitals = Hospital.all
     end
 
-    @latitude = params[:latitude]
-    @longitude = params[:longitude]
+    @latitude = params[:latitude].to_f
+    @longitude = params[:longitude].to_f
 
     authorize @hospitals
     @time_per_patient = 20
@@ -29,8 +29,8 @@ class HospitalsController < ApplicationController
         # info_window_html: render_to_string(partial: "info_window", locals: {hospital: @hospital})
       }
 
-      @latitude = params[:latitude]
-      @longitude = params[:longitude]
+      @latitude = params[:latitude].to_f
+      @longitude = params[:longitude].to_f
   end
 
   def new

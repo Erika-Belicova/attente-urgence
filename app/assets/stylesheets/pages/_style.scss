@@ -25,7 +25,7 @@ h1 {
 
 
 h2 {
-  color: #33B9C7;
+  color: #1C737B;
   font-family: noto sans;
   font-size: 28px;
   font-weight: 400;
@@ -84,7 +84,7 @@ p {
 
 .btn-secondary{
   border-radius: 25px;
-  background:#1C737B;
+  background:#33B9C7;
   box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
   display: flex;
   width: 96px;
@@ -480,4 +480,28 @@ p {
 .address-card {
   padding-left: 5px;
   margin-right: 8px;
+}
+
+.btn-forth{
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
+  background:#1C737B;
+  box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  display: flex;
+  width: 100%;
+  height: 16px;
+  padding: 20px 45px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  font-family: noto sans;
+  font-weight: normal;
+  color: white;
+  text-decoration: none;
+  margin-top: 20px;
+  // margin-right: 10px;
+  border: 0px;
+  // padding-left: 8px
 }
