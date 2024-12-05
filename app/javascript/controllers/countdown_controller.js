@@ -81,8 +81,8 @@ export default class extends Controller {
           return;
         }
 
-        // Subtract 16 minutes from the target time in fast-forward mode
-        this.toValue = new Date(to.getTime() - 19 * 60 * 1000).toISOString(); // Jump 16 minutes forward
+        // Subtract 19 minutes from the target time in fast-forward mode
+        this.toValue = new Date(to.getTime() - 19 * 60 * 1000).toISOString(); // Jump 19 minutes forward
         this.deleteFromQueue();
         console.log("QUEUE DELETE")
         this.update();  // Reflect changes in the countdown
@@ -129,23 +129,6 @@ export default class extends Controller {
     }
   }
 
-  // deleteFromQueue() {
-  //   console.log("deleteFromQueue triggered");
-  //   // logic - call controller method to update waiting list
-  //   // open appointments all - index
-  //   // appointments all.first - delete -> not showing anything redirect back
-  //   // update the order loop
-  //   // every update, update page without refresh
-
-  //   console.log("deleteFromQueue triggered");
-
-  //   // logic to handle the queue update
-  //   // You may perform your Ajax or other updates here
-
-  //   // Now, only trigger the button click under controlled conditions
-  //   this.deleteButtonTarget.click();
-  // }
-
   deleteFromQueue() {
     console.log("deleteFromQueue triggered");
 
@@ -155,20 +138,20 @@ export default class extends Controller {
     // Get the current count from the data attribute
     let currentCount = parseInt(countElement.dataset.count, 10);
 
-    if (currentCount > 0) {
-      // Decrement the count
-      currentCount--;
+    if (currentCount > 2) { // Stop decrementing when count reaches 2
+        // Decrement the count
+        currentCount--;
 
-      // Update the data attribute
-      countElement.dataset.count = currentCount;
+        // Update the data attribute
+        countElement.dataset.count = currentCount;
 
-      // Update the displayed number
-      const countNumber = document.getElementById("count-number");
-      countNumber.textContent = currentCount;
+        // Update the displayed number
+        const countNumber = document.getElementById("count-number");
+        countNumber.textContent = currentCount;
 
-      console.log(`Count updated to: ${currentCount}`);
+        console.log(`Count updated to: ${currentCount}`);
     } else {
-      console.log("No more patients in the queue.");
+        console.log("Stopping at 2. No further decrement.");
     }
   }
 

@@ -154,3 +154,13 @@ p.entry {
 #modal-button {
   display: none;
 }
+
+.invisible-btn {
+  opacity: 0;              /* Makes the button fully invisible */
+  pointer-events: all;     /* Ensures that the button is still clickable */
+  width: 100%;             /* Makes the button fill the width of its container */
+  height: 100%;            /* Makes the button fill the height of its container */
+  background: transparent; /* Make the background transparent */
+  border: none;            /* Remove border */
+  position: absolute;      /* If you want to avoid affecting the layout */
+}
