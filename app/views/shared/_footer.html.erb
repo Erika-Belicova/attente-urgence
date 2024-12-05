@@ -28,10 +28,18 @@
   </a>
 
   <!-- Lien vers la liste des hôpitaux avec latitude et longitude -->
+  <% if current_patient && current_patient.appointments.last && current_patient.appointments.last.hospital %>
   <%= link_to hospitals_path(latitude: current_patient.appointments.last.latitude, longitude: current_patient.appointments.last.longitude) do %>
     <i class="fa-solid fa-hospital"></i>
     <p class="footer-paragraph">Hopitaux</p>
   <% end %>
+  <% else %>
+    <a href="#">
+      <i class="fa-solid fa-hospital"></i>
+      <p class="footer-paragraph">Hôpitaux</p>
+    </a>
+  <% end %>
+
 
   <!-- Lien vers l'hôpital du dernier rendez-vous -->
   <% if current_patient && current_patient.appointments.last && current_patient.appointments.last.hospital %>
