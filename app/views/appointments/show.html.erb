@@ -119,8 +119,8 @@
             <div class= "cards-hospital">
               <div class= "card-category-alert" >
                 <!-- récuperer la bonne valeur -->
-                <% @duration = 30 %>
-                <h2 class="h2-modal d-flex align-items-start"><i class="fa-solid fa-map-location-dot small-icon"></i> Vous avez <%= @duration %> minutes de route</h2>
+                <%# @duration = 30 %>
+                <h2 class="h2-modal d-flex align-items-start"><i class="fa-solid fa-map-location-dot small-icon"></i> Vous avez <%= @hospital.distance_to([@appointment.latitude, @appointment.longitude]).round * 5 %> minutes de route</h2>
               </div>
             </div>
 
