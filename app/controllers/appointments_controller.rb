@@ -1,5 +1,5 @@
 class AppointmentsController < ApplicationController
-  before_action :set_appointment, only: [:show, :destroy, :map, :arrived, :delete_from_queue]
+  before_action :set_appointment, only: [:show, :destroy, :map, :arrived]
 
   def index
     @appointments = Appointment.all
@@ -11,15 +11,16 @@ class AppointmentsController < ApplicationController
   end
 
   def show
-    @appointments = @appointment.hospital.appointments
+    @appointments_hospital = @appointment.hospital.appointments
     @hospital = @appointment.hospital
+
     @waiting_list = []
-    @appointments.each do |appointment|
+    @appointments_hospital.each do |appointment|
       puts appointment
-      @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at && appointment.hospital == @appointment.hospital && appointment.checked_in_patient == false # <= @appointment.created_at) &&
-                                        #    (appointment.checked_in_patient == false)
+      @waiting_list.push(appointment) if appointment.created_at <= @appointment.created_at && appointment.hospital.id == @appointment.hospital.id && appointment.checked_in_patient == false
     end
 
+    # @duration = hospital.distance_to([@latitude, @longitude]).round * 5
     @waiting_list = @waiting_list.sort_by(&:created_at)
 
     @leaves_queue = @waiting_list.select do |patient|
@@ -29,9 +30,7 @@ class AppointmentsController < ApplicationController
 
     @time_per_patient = 20
     @waiting_time = @waiting_list.length * @time_per_patient
-
     @start_time = Time.now.utc
-
     @end_time = @start_time + @waiting_time.minutes
 
     # Convert both times to ISO8601 format (compatible with JavaScript's Date object)
@@ -73,14 +72,10 @@ class AppointmentsController < ApplicationController
   end
 
   def delete_from_queue
-    @appointments = @appointment.hospital.appointments
-    @hospital = @appointment.hospital
-    @waiting_list = []
-
     @leaves_queue = Appointment.find(params[:leaves_id])
     @leaves_queue.destroy
 
-    # @appointment.destroy
+    @appointment = Appointment.find(params[:appointment_id])
 
     redirect_to appointment_path(@appointment)
   end
@@ -110,6 +105,13 @@ class AppointmentsController < ApplicationController
   private
 
   def set_appointment
-    @appointment = Appointment.find_by(@id)
+    # @appointment = Appointment.find_by(@id)
+    @appointment = if params[:id]
+                      Appointment.find(params[:id])
+                    elsif params[:appointment_id]
+                      Appointment.find(params[:appointment_id])
+                    else
+                      raise ActiveRecord::RecordNotFound, "Appointment ID not provided"
+                   end
   end
 end

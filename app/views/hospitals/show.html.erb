@@ -34,7 +34,18 @@
                 <div class="d-flex justify-content-around">
                   <!--texte-->
                   <p><i class="fa-solid fa-person-walking"></i> <%= @hospital.distance_to([@latitude, @longitude]).round %> km</p>
-                  <p><i class="fa-solid fa-solid fa-clock"></i> 1h30</p>
+                    <% @waiting_minutes = @hospital.appointments.length * @time_per_patient %>
+                    <% @hours = @waiting_minutes / 60 %>
+                    <% @minutes = @waiting_minutes % 60 %>
+                  <p><i class="fa-solid fa-solid fa-clock"></i>
+                    <% if @minutes == 0 %>
+                      <%= "#{@hours} h" %>
+                    <% elsif @hours == 0 %>
+                      <%= "#{@minutes} min" %>
+                    <% else %>
+                      <%= "#{@hours} h #{@minutes} min" %>
+                    <% end %>
+                  </p>
                   <p><i class="fa-solid fa-solid fa-map"></i> <%= @hospital.distance_to([@latitude, @longitude]).round * 5 %> min</p>
                 </div>
 
