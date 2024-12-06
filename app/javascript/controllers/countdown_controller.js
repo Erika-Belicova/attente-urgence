@@ -193,6 +193,9 @@ export default class extends Controller {
 
         return;
       }
+    } else {
+      this.modalButtonTarget.click();
+      clearInterval(this.timer);
     }
   }
 
